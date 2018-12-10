@@ -1,0 +1,56 @@
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/device_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/margin_sm"
+    android:layout_margin="@dimen/margin"
+    android:background="@drawable/shadow"
+    android:elevation="2dp"
+    >
+
+  <ImageView
+      android:id="@+id/image_device"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:src="@tools:sample/avatars" />
+
+  <TextView
+      android:id="@+id/text_device_name"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      tools:text="device name"
+      android:textSize="20sp"
+      android:textColor="@color/colorGray"
+      app:layout_constraintTop_toTopOf="@+id/image_device"
+      app:layout_constraintStart_toEndOf="@+id/image_device"
+      android:layout_marginStart="8dp"
+      android:layout_marginBottom="8dp"
+      app:layout_constraintBottom_toTopOf="@+id/text_device_subtitle" />
+
+  <TextView
+      android:id="@+id/text_device_subtitle"
+      android:layout_width="285dp"
+      android:layout_height="20dp"
+      tools:text="subtitle"
+      app:layout_constraintBottom_toBottomOf="@+id/image_device"
+      app:layout_constraintStart_toEndOf="@+id/image_device"
+      android:layout_marginStart="8dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_marginEnd="8dp"
+      app:layout_constraintHorizontal_bias="0.050" />
+
+  <TextView
+      android:id="@+id/text_device_status"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      tools:text="connection"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/image_device" />
+</android.support.constraint.ConstraintLayout>

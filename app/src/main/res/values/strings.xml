@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">IOTClient</string>
+    <string name="title_device">Device</string>
+    <string name="title_privacy">Privacy</string>
+    <string name="title_setting">Setting</string>
+
+    <string name="device_title">IOT Device</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>
