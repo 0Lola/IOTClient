@@ -7,6 +7,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+
 import com.example.zxa01.iotclient.R;
 import com.example.zxa01.iotclient.device.DeviceFragment;
 import com.example.zxa01.iotclient.privacy.PrivacyFragment;
@@ -16,7 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class HomeActivity extends AppCompatActivity
-        implements HomeFragment.OnFragmentInteractionListener, DeviceFragment.OnFragmentInteractionListener
+        implements DeviceFragment.OnFragmentInteractionListener
         , PrivacyFragment.OnFragmentInteractionListener, SettingFragment.OnFragmentInteractionListener {
 
     DeviceFragment mDeviceFragment = new DeviceFragment();
@@ -58,11 +59,6 @@ public class HomeActivity extends AppCompatActivity
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-        // do nothing
-    }
-
-    @Override
     public void onDeviceFragment(Uri uri) {
         // do nothing
     }
@@ -79,7 +75,7 @@ public class HomeActivity extends AppCompatActivity
 
     private void showFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_home, fragment)
+                .replace(R.id.home_fragment_layout, fragment)
                 .commit();
     }
 }
