@@ -1,4 +1,4 @@
-package com.example.zxa01.iotclient.device;
+package com.example.zxa01.iotclient.pojo;
 
 public class Device {
     private int id;

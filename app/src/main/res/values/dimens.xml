@@ -1,10 +1,19 @@
 <resources>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
 
+    <dimen name="margin_lg">20dp</dimen>
     <dimen name="margin">16dp</dimen>
     <dimen name="margin_sm">8dp</dimen>
     <dimen name="margin_xs">4dp</dimen>
+
+    <dimen name="padding_lg">20dp</dimen>
+    <dimen name="padding">16dp</dimen>
+    <dimen name="padding_sm">8dp</dimen>
+    <dimen name="padding_xs">4dp</dimen>
+
+    <dimen name="font_lg">24sp</dimen>
+    <dimen name="font">18sp</dimen>
+    <dimen name="font_sm">12sp</dimen>
 
 </resources>

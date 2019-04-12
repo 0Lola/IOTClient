@@ -1,13 +1,35 @@
 <resources>
+
+    <!--Home-->
     <string name="app_name">IOTClient</string>
     <string name="title_device">Device</string>
     <string name="title_privacy">Privacy</string>
     <string name="title_setting">Setting</string>
 
-    <string name="device_title">IOT Device</string>
+    <!--Create-->
+    <string name="title_device_create">Create New Device</string>
+    <string name="input_placeholder">the address of device</string>
+    <string name="button_qrcode">QRcode</string>
+    <string name="button_correct">Correct</string>
+    <string name="button_cancel">Cancel</string>
+
+
+    <!--Login-->
+    <string name="action_sign_in">Log in</string>
+    <string name="login_iot_gateway">Login to IOT gateway</string>
+    <string name="prompt_gateway">Gateway address</string>
+    <string name="prompt_account">Account</string>
+    <string name="prompt_password">Password</string>
+    <string name="error_invalid_gateway">This gateway format is not available</string>
+    <string name="error_invalid_account">This account is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--Common-->
+    <string name="dialog">dialog</string>
 
 </resources>

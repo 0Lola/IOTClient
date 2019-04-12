@@ -1,4 +1,4 @@
-package com.example.zxa01.iotclient.setting;
+package com.example.zxa01.iotclient.home.privacy;
 
 import android.content.Context;
 import android.net.Uri;
@@ -13,12 +13,12 @@ import com.example.zxa01.iotclient.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link SettingFragment.OnFragmentInteractionListener} interface
+ * {@link PrivacyFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link SettingFragment#newInstance} factory method to
+ * Use the {@link PrivacyFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SettingFragment extends Fragment {
+public class PrivacyFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,7 +30,7 @@ public class SettingFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public SettingFragment() {
+    public PrivacyFragment() {
         // Required empty public constructor
     }
 
@@ -40,11 +40,11 @@ public class SettingFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment SettingFragment.
+     * @return A new instance of fragment PrivacyFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SettingFragment newInstance(String param1, String param2) {
-        SettingFragment fragment = new SettingFragment();
+    public static PrivacyFragment newInstance(String param1, String param2) {
+        PrivacyFragment fragment = new PrivacyFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,13 +65,13 @@ public class SettingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setting, container, false);
+        return inflater.inflate(R.layout.fragment_privacy, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onSettingFragment(uri);
+            mListener.onPrivacyFragment(uri);
         }
     }
 
@@ -104,6 +104,6 @@ public class SettingFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onSettingFragment(Uri uri);
+        void onPrivacyFragment(Uri uri);
     }
 }

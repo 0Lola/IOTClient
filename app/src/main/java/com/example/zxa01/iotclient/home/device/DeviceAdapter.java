@@ -1,4 +1,4 @@
-package com.example.zxa01.iotclient.device;
+package com.example.zxa01.iotclient.home.device;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.zxa01.iotclient.R;
+import com.example.zxa01.iotclient.pojo.Device;
 
 import java.util.LinkedList;
 
@@ -51,7 +52,6 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
             this.textDeviceName = view.findViewById(R.id.text_device_name);
             this.textDeviceSubtitle = view.findViewById(R.id.text_device_subtitle);
             this.textDeviceStatus = view.findViewById(R.id.text_device_status);
-
         }
 
         @Override
