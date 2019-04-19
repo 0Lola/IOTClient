@@ -1,4 +1,4 @@
-package com.example.zxa01.iotclient.home.device;
+package com.example.zxa01.iotclient.home.device.view;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -7,17 +7,18 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.zxa01.iotclient.R;
 import com.example.zxa01.iotclient.databinding.FragmentDeviceBinding;
+import com.example.zxa01.iotclient.home.device.viewModel.DevicesViewModel;
+import com.example.zxa01.iotclient.home.device.view.create.DeviceCreateFragment;
 
 public class DeviceFragment extends Fragment {
 
     private FragmentDeviceBinding binding;
-    private DeviceViewModel viewModel = new DeviceViewModel();
+    private DevicesViewModel viewModel = new DevicesViewModel();
 
     public DeviceFragment() {
     }
@@ -27,18 +28,11 @@ public class DeviceFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_device,container,false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_device, container, false);
         binding.setViewModel(viewModel);
-        refreshDevices(binding.deviceRecyclerView);
-        setupDialog(binding.fab);
+        setup();
         return binding.getRoot();
     }
 
@@ -52,20 +46,14 @@ public class DeviceFragment extends Fragment {
         super.onDetach();
     }
 
-    public interface OnFragmentInteractionListener {
-        void onDeviceFragment(Uri uri);
+    private void setup() {
+        binding.fab.setOnClickListener(item -> drawDialog());
+        binding.deviceRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        viewModel.refreshDevices();
+        viewModel.getDevices().observe(this, deviceList -> viewModel.setAdapter(deviceList));
     }
 
-    private void refreshDevices(RecyclerView view){
-        view.setLayoutManager(new LinearLayoutManager(getActivity()));
-        view.setAdapter(new DeviceAdapter(viewModel.getDevices()));
-    }
-
-    private void setupDialog(View view){
-        view.setOnClickListener(item -> drawDialog());
-    }
-
-    private void drawDialog(){
+    private void drawDialog() {
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         Fragment fragment = getFragmentManager().findFragmentByTag(String.valueOf(R.string.dialog));
         if (fragment != null) {
@@ -73,6 +61,10 @@ public class DeviceFragment extends Fragment {
         }
         fragmentTransaction.addToBackStack(null);
         new DeviceCreateFragment().show(fragmentTransaction, String.valueOf(R.string.dialog));
+    }
+
+    public interface OnFragmentInteractionListener {
+        void onDeviceFragment(Uri uri);
     }
 
 }

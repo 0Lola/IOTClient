@@ -5,35 +5,35 @@
 
     <data>
 
-    <variable
-        name="viewModel"
-        type="com.example.zxa01.iotclient.home.device.DeviceViewModel"/>
+        <variable
+            name="viewModel"
+            type="com.example.zxa01.iotclient.home.device.viewModel.DevicesViewModel" />
 
     </data>
 
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".home.device.DeviceFragment">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/device_recycler_view"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="@dimen/padding"
-        android:clipToPadding="false"
-        tools:listitem="@layout/recycler_view_device" />
+        tools:context=".home.device.view.DeviceFragment">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/margin"
-        android:src="@drawable/ic_add_black_24dp"
-        app:backgroundTint="@color/colorPrimary"
-        />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/device_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/padding"
+            app:setAdapter="@{viewModel.getAdapter()}"
+            tools:listitem="@layout/recycler_view_device" />
 
-</FrameLayout>
-    
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/margin"
+            android:src="@drawable/ic_add_black_24dp"
+            app:backgroundTint="@color/colorPrimary" />
+
+    </FrameLayout>
+
 </layout>

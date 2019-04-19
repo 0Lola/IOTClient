@@ -1,4 +1,4 @@
-package com.example.zxa01.iotclient.home.device;
+package com.example.zxa01.iotclient.home.device.view.create;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.zxa01.iotclient.R;
 import com.example.zxa01.iotclient.databinding.FragmentDeviceCreateBinding;
+import com.example.zxa01.iotclient.home.device.viewModel.DevicesViewModel;
 
 public class DeviceCreateFragment extends DialogFragment {
 
@@ -39,7 +40,7 @@ public class DeviceCreateFragment extends DialogFragment {
                 )
                 .setPositiveButton(R.string.button_correct,
                         (dialog, whichButton) -> {
-                            new DeviceViewModel().createDevice("address");
+                            new DevicesViewModel().createDevice("address");
                         }
                 )
                 .setNegativeButton(R.string.button_cancel, (dialog, whichButton) -> {

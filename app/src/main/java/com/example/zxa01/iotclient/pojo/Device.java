@@ -1,6 +1,10 @@
 package com.example.zxa01.iotclient.pojo;
 
-public class Device {
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
+public class Device extends BaseObservable {
+
     private int id;
     private String name;
     private String subTitle;
@@ -19,6 +23,7 @@ public class Device {
 
     }
 
+    @Bindable
     public int getId() {
         return id;
     }
@@ -27,6 +32,7 @@ public class Device {
         this.id = id;
     }
 
+    @Bindable
     public String getName() {
         return name;
     }
@@ -35,6 +41,7 @@ public class Device {
         this.name = name;
     }
 
+    @Bindable
     public String getSubTitle() {
         return subTitle;
     }
@@ -43,6 +50,7 @@ public class Device {
         this.subTitle = subTitle;
     }
 
+    @Bindable
     public String getType() {
         return type;
     }
@@ -51,6 +59,7 @@ public class Device {
         this.type = type;
     }
 
+    @Bindable
     public boolean isStatus() {
         return status;
     }

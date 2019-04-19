@@ -9,8 +9,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import com.example.zxa01.iotclient.R;
 import com.example.zxa01.iotclient.databinding.ActivityHomeBinding;
-import com.example.zxa01.iotclient.home.device.DeviceFragment;
-import com.example.zxa01.iotclient.home.device.DeviceViewModel;
+import com.example.zxa01.iotclient.home.device.view.DeviceFragment;
+import com.example.zxa01.iotclient.home.device.viewModel.DevicesViewModel;
 import com.example.zxa01.iotclient.home.privacy.PrivacyFragment;
 import com.example.zxa01.iotclient.home.setting.SettingFragment;
 
@@ -82,7 +82,7 @@ public class HomeActivity extends AppCompatActivity implements
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == 0) {
             if (resultCode == RESULT_OK) {
-                new DeviceViewModel().createDevice(intent.getStringExtra("SCAN_RESULT"));
+                new DevicesViewModel().createDevice(intent.getStringExtra("SCAN_RESULT"));
             }
         }
     }

@@ -5,7 +5,7 @@
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.device.DeviceCreateFragment">
+    tools:context=".home.device.view.create.DeviceCreateFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
