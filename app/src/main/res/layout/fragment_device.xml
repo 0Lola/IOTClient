@@ -17,10 +17,9 @@
         android:layout_height="match_parent"
         tools:context=".home.device.view.DeviceFragment">
 
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/device_recycler_view"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:paddingTop="@dimen/padding"
@@ -45,7 +44,6 @@
             android:layout_margin="@dimen/margin"
             android:src="@drawable/ic_add_black_24dp"
             app:backgroundTint="@color/colorPrimary" />
-
 
     </FrameLayout>
 

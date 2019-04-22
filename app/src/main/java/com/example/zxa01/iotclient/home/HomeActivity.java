@@ -32,7 +32,6 @@ public class HomeActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
-
         setupFragment(binding.navigation);
         showFragment(mDeviceFragment);
     }
@@ -80,7 +79,7 @@ public class HomeActivity extends AppCompatActivity implements
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (resultCode == RESULT_OK) {
-            new DeviceViewModel().createDevice(intent.getStringExtra("SCAN_RESULT"));
+//            new DeviceViewModel().createDevice(intent.getStringExtra("SCAN_RESULT"));
         } else {
             new AlertDialog.Builder(this)
                     .setMessage(R.string.qrcode_error)

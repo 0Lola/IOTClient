@@ -16,8 +16,6 @@ public class LoginModel extends BaseObservable {
         return isAuthorized;
     }
 
-
-
     public void login(@NonNull LoginMessage message) {
         isAuthorized.setValue(true);
 //        Callback<Object> callback = new Callback<Object>() {

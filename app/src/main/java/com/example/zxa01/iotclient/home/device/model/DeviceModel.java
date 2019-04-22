@@ -1,24 +1,19 @@
 package com.example.zxa01.iotclient.home.device.model;
-
 import com.example.zxa01.iotclient.common.http.Api;
 import com.example.zxa01.iotclient.common.pojo.device.Device;
 import com.example.zxa01.iotclient.common.pojo.device.Manufacturer;
 import com.example.zxa01.iotclient.common.pojo.device.Model;
-
 import android.arch.lifecycle.MutableLiveData;
 import android.databinding.BaseObservable;
 import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DeviceModel extends BaseObservable {
 
-    private String status;
     private List<Device> deviceList;
     private MutableLiveData<List<Device>> devices;
 
@@ -59,11 +54,9 @@ public class DeviceModel extends BaseObservable {
             public void onResponse(Call<Object> call, Response<Object> response) {
                 // TODO transfer response
                 Log.i("Test", response.message());
-                DeviceModel deviceModel = new DeviceModel();
-                deviceModel.addDevice(oxygenDevice);
-                deviceModel.addDevice(oxygenDevice);
-                devices.setValue(deviceModel.deviceList);
-                status = "success";
+                addDevice(oxygenDevice);
+                addDevice(oxygenDevice);
+                devices.setValue(deviceList);
             }
 
             @Override
@@ -80,11 +73,4 @@ public class DeviceModel extends BaseObservable {
         // TODO api post-createDevice & update
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String statue) {
-        this.status = statue;
-    }
 }

@@ -35,11 +35,19 @@ public class Api {
     }
 
     public interface ApiInterface {
-        @GET("/api/breeds/list/all")
-        Call<Object> getDevices();
 
         @POST("/api/breeds/list/all")
         Call<Object> login();
+
+        @GET("/api/breeds/list/all")
+        Call<Object> getDevices();
+
+
+        @GET("/api/breeds/list/all")
+        Call<Object> getDevice();
+
+        @GET("/api/breeds/list/all")
+        Call<Object> getPrivacyPolicyReport();
 
 //        @GET("/api/breed/{breed}/images")
 //        Call<DogBreedImages> getImagesByBreed(@Path("breed") String breed);

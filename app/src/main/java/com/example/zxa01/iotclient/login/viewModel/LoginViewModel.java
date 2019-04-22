@@ -16,7 +16,7 @@ public class LoginViewModel extends ViewModel {
     private LoginModel loginModel = new LoginModel();
 
     public LoginViewModel(Context context) {
-        this.loginMessage.set(new LoginMessage());
+        loginMessage.set(new LoginMessage());
         this.context = context;
     }
 

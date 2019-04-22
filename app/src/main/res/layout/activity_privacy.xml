@@ -1,16 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".privacy.PrivacyActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Privacy"
-        tools:layout_editor_absoluteX="193dp"
-        tools:layout_editor_absoluteY="197dp" />
-</android.support.constraint.ConstraintLayout>
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.zxa01.iotclient.privacy.viewModel.PrivacyViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        tools:context=".privacy.view.PrivacyActivity">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/margin_lg"
+                android:background="@drawable/border_bottom_xl"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_sm">
+
+                <TextView
+                    android:id="@+id/textViewTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="隱私政策報告"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/font_lg" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="版本 1.0"
+                    android:textAlignment="textEnd" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_lg"
+                android:layout_marginTop="@dimen/margin_sm"
+                android:layout_marginRight="@dimen/margin_lg"
+                android:background="@drawable/border_bottom"
+                android:padding="@dimen/padding_sm"
+                android:text="描述" />
+
+            <TextView
+                android:id="@+id/textViewDescription2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_lg"
+                android:layout_marginTop="@dimen/margin_sm"
+                android:layout_marginRight="@dimen/margin_lg"
+                android:padding="@dimen/padding_sm"
+                android:text="我們會依照下列政策收集相關資料" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/privacy_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingTop="@dimen/padding"
+                app:setAdapter="@{viewModel.getAdapter()}"
+                tools:listitem="@layout/recycler_view_privacy" />
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

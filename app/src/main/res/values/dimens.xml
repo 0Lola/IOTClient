@@ -16,4 +16,6 @@
     <dimen name="font">18sp</dimen>
     <dimen name="font_sm">12sp</dimen>
 
+    <dimen name="layout_width">120dp</dimen>
+
 </resources>

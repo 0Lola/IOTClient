@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.zxa01.iotclient.detail.viewModel.DetailViewModel" />
+    </data>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE}">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -16,57 +25,62 @@
             android:scrollbarAlwaysDrawHorizontalTrack="true"
             tools:context=".detail.view.DetailActivity">
 
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_sm"
-                android:layout_marginTop="@dimen/margin"
-                android:layout_marginEnd="@dimen/margin_sm"
-                android:layout_marginBottom="@dimen/margin"
-                android:padding="@dimen/padding_sm"
-                android:background="@drawable/border_bottom_xl"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@+id/tableLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/textViewPrivacy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/font"
-                    android:textStyle="bold"
-                    android:text="隱私政策" />
-
-                <Button
-                    android:id="@+id/buttonPrivacySetting"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="隱私偏好設定" />
-
-                <Button
-                    android:id="@+id/buttonPrivacyReport"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="檢測報告" />
-            </LinearLayout>
-
             <TableLayout
                 android:id="@+id/tableLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin"
                 android:padding="@dimen/padding_sm"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="20dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_bottom_xl">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/margin_lg"
+                        android:layout_marginBottom="@dimen/margin_lg"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textViewPrivacy"
+                            android:layout_width="@dimen/layout_width"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/padding_sm"
+                            android:text="隱私政策"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="@dimen/font"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/buttonPrivacy"
+                            style="@style/Widget.AppCompat.Button.Colored"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/font"
+                            android:padding="@dimen/padding"
+                            android:onClick="@{()->viewModel.settingPrivacy()}"
+                            android:text="偏好設定" />
+
+                        <Button
+                            android:id="@+id/buttonPrivacyReport"
+                            style="@style/Widget.AppCompat.Button.Colored"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/font"
+                            android:padding="@dimen/padding"
+                            android:onClick="@{()->viewModel.downloadPrivacyReport()}"
+                            android:text="檢測報告下載" />
+
+                    </LinearLayout>
+
+                </TableRow>
+
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -80,21 +94,22 @@
 
                         <TextView
                             android:id="@+id/textViewUDNKey"
-                            android:layout_width="150dp"
+                            android:layout_width="@dimen/layout_width"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/padding_sm"
                             android:text="UDN"
+                            android:textAlignment="textEnd"
                             android:textColor="@color/colorAccent"
                             android:textSize="@dimen/font"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textViewUDNValue"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/margin_lg"
                             android:padding="@dimen/padding_sm"
-                            android:text="TextView"
+                            android:text="@{viewModel.device.UDN}"
                             android:textSize="@dimen/font" />
 
                     </LinearLayout>
@@ -102,7 +117,7 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_width="match_parent"
+                    android:layout_width="364dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/border_bottom">
 
@@ -113,21 +128,22 @@
 
                         <TextView
                             android:id="@+id/textViewNameKey"
-                            android:layout_width="150dp"
+                            android:layout_width="@dimen/layout_width"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/padding_sm"
                             android:text="裝置名稱"
+                            android:textAlignment="textEnd"
                             android:textColor="@color/colorAccent"
                             android:textSize="@dimen/font"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textViewNameValue"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/margin_lg"
                             android:padding="@dimen/padding_sm"
-                            android:text="TextView"
+                            android:text="@{viewModel.device.name}"
                             android:textSize="@dimen/font" />
 
                     </LinearLayout>
@@ -146,21 +162,22 @@
 
                         <TextView
                             android:id="@+id/textViewTypeKey"
-                            android:layout_width="150dp"
+                            android:layout_width="@dimen/layout_width"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/padding_sm"
                             android:text="裝置種類"
+                            android:textAlignment="textEnd"
                             android:textColor="@color/colorAccent"
                             android:textSize="@dimen/font"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textViewTypeValue"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/margin_lg"
                             android:padding="@dimen/padding_sm"
-                            android:text="TextView"
+                            android:text="@{viewModel.device.name}"
                             android:textSize="@dimen/font" />
 
                     </LinearLayout>
@@ -179,21 +196,22 @@
 
                         <TextView
                             android:id="@+id/textViewManufacturerNameKey"
-                            android:layout_width="150dp"
+                            android:layout_width="@dimen/layout_width"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/padding_sm"
                             android:text="製造商名稱"
+                            android:textAlignment="textEnd"
                             android:textColor="@color/colorAccent"
                             android:textSize="@dimen/font"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textViewManufacturerNameValue"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/margin_lg"
                             android:padding="@dimen/padding_sm"
-                            android:text="TextView"
+                            android:text="@{viewModel.device.manufacturer.name}"
                             android:textSize="@dimen/font" />
 
                     </LinearLayout>
@@ -212,21 +230,22 @@
 
                         <TextView
                             android:id="@+id/textViewManufacturerUrlKey"
-                            android:layout_width="150dp"
+                            android:layout_width="@dimen/layout_width"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/padding_sm"
                             android:text="製造商網址"
+                            android:textAlignment="textEnd"
                             android:textColor="@color/colorAccent"
                             android:textSize="@dimen/font"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textViewManufacturerUrlValue"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/margin_lg"
                             android:padding="@dimen/padding_sm"
-                            android:text="TextView"
+                            android:text="@{viewModel.device.manufacturer.url}"
                             android:textSize="@dimen/font" />
 
                     </LinearLayout>
@@ -245,56 +264,24 @@
 
                         <TextView
                             android:id="@+id/textViewManufacturerSerialNumberKey"
-                            android:layout_width="150dp"
+                            android:layout_width="@dimen/layout_width"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/padding_sm"
                             android:text="製造商序號"
+                            android:textAlignment="textEnd"
                             android:textColor="@color/colorAccent"
                             android:textSize="@dimen/font"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textViewManufacturerSerialNumberValue"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginRight="@dimen/margin_lg"
-                            android:padding="@dimen/padding_sm"
-                            android:text="TextView"
-                            android:textSize="@dimen/font" />
-
-
-                    </LinearLayout>
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/border_bottom">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textViewUDNKey6"
-                            android:layout_width="150dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/padding_sm"
-                            android:text="製造商序號"
-                            android:textColor="@color/colorAccent"
-                            android:textSize="@dimen/font"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/textViewUDNValue6"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
                             android:layout_marginRight="@dimen/margin_lg"
                             android:padding="@dimen/padding_sm"
-                            android:text="TextView"
+                            android:text="@{viewModel.device.manufacturer.serialNumber}"
                             android:textSize="@dimen/font" />
+
                     </LinearLayout>
 
                 </TableRow>
@@ -311,21 +298,22 @@
 
                         <TextView
                             android:id="@+id/textViewModelNameKey"
-                            android:layout_width="150dp"
+                            android:layout_width="@dimen/layout_width"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/padding_sm"
                             android:text="型號名稱"
+                            android:textAlignment="textEnd"
                             android:textColor="@color/colorAccent"
                             android:textSize="@dimen/font"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textViewModelNameValue"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/margin_lg"
                             android:padding="@dimen/padding_sm"
-                            android:text="TextView"
+                            android:text="@{viewModel.device.model.name}"
                             android:textSize="@dimen/font" />
 
 
@@ -345,21 +333,22 @@
 
                         <TextView
                             android:id="@+id/textViewModelUrlKey"
-                            android:layout_width="150dp"
+                            android:layout_width="@dimen/layout_width"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/padding_sm"
                             android:text="型號網址"
+                            android:textAlignment="textEnd"
                             android:textColor="@color/colorAccent"
                             android:textSize="@dimen/font"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textViewModelUrlValue"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/margin_lg"
                             android:padding="@dimen/padding_sm"
-                            android:text="TextView"
+                            android:text="@{viewModel.device.model.url}"
                             android:textSize="@dimen/font" />
 
                     </LinearLayout>
@@ -378,21 +367,22 @@
 
                         <TextView
                             android:id="@+id/textViewModelDescriptionKey"
-                            android:layout_width="150dp"
+                            android:layout_width="@dimen/layout_width"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/padding_sm"
                             android:text="型號描述"
+                            android:textAlignment="textEnd"
                             android:textColor="@color/colorAccent"
                             android:textSize="@dimen/font"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textViewModelDescriptionValue"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/margin_lg"
                             android:padding="@dimen/padding_sm"
-                            android:text="TextView"
+                            android:text="@{viewModel.device.model.description}"
                             android:textSize="@dimen/font" />
 
                     </LinearLayout>
@@ -411,23 +401,23 @@
 
                         <TextView
                             android:id="@+id/textViewLocationKey"
-                            android:layout_width="150dp"
+                            android:layout_width="@dimen/layout_width"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/padding_sm"
                             android:text="位置"
+                            android:textAlignment="textEnd"
                             android:textColor="@color/colorAccent"
                             android:textSize="@dimen/font"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textViewLocationValue"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/margin_lg"
                             android:padding="@dimen/padding_sm"
-                            android:text="TextView"
+                            android:text="@{viewModel.device.location}"
                             android:textSize="@dimen/font" />
-
 
                     </LinearLayout>
 
@@ -444,21 +434,22 @@
 
                         <TextView
                             android:id="@+id/textViewUPCKey"
-                            android:layout_width="150dp"
+                            android:layout_width="@dimen/layout_width"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/padding_sm"
                             android:text="UPC"
+                            android:textAlignment="textEnd"
                             android:textColor="@color/colorAccent"
                             android:textSize="@dimen/font"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textViewUPCValue"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/margin_lg"
                             android:padding="@dimen/padding_sm"
-                            android:text="TextView"
+                            android:text="@{viewModel.device.UPC}"
                             android:textSize="@dimen/font" />
 
                     </LinearLayout>

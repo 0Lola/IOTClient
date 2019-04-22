@@ -16,19 +16,13 @@ import java.util.List;
 public class DeviceViewModel extends ViewModel {
 
     public ObservableBoolean isLoading = new ObservableBoolean(true);
-    private Context context;
     private DeviceModel deviceModel = new DeviceModel();
     private DeviceAdapter adapter = new DeviceAdapter(R.layout.recycler_view_device, this);
-
+    private Context context;
 
     public DeviceViewModel(Context context) {
         this.context = context;
     }
-
-    public DeviceViewModel() {
-
-    }
-
 
     /**
      * model
@@ -44,7 +38,7 @@ public class DeviceViewModel extends ViewModel {
 
     public void createDevice(String address) {
         deviceModel.createDevice(address);
-        this.refreshDevices();
+        refreshDevices();
     }
 
     /**

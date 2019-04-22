@@ -23,6 +23,8 @@ public class DeviceCreateFragment extends DialogFragment {
     private static final String QRCODE_CODE_MODE = "QR_CODE_MODE";
     private static final int QRCODE_REQUEST_CODE = 0;
 
+    private DeviceViewModel viewModel;
+
     private FragmentDeviceCreateBinding binding;
 
 
@@ -37,7 +39,7 @@ public class DeviceCreateFragment extends DialogFragment {
                         (dialog, whichButton) -> qrcodeIntent()
                 )
                 .setPositiveButton(R.string.button_correct,
-                        (dialog, whichButton) -> new DeviceViewModel().createDevice("address")
+                        (dialog, whichButton) -> viewModel.createDevice("address")
                 )
                 .setNegativeButton(R.string.button_cancel, (dialog, whichButton) -> {
                 })
@@ -53,6 +55,8 @@ public class DeviceCreateFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_device_create, container, false);
+        viewModel = new DeviceViewModel(binding.getRoot().getContext());
+        binding.setViewModel(viewModel);
         return binding.getRoot();
     }
 

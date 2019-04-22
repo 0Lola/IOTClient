@@ -2,7 +2,7 @@
 
     <!--Title-->
     <string name="title_detail">裝置資訊</string>
-    <string name="title_privacy">隱私政策</string>
+    <string name="title_privacy">隱私偏好設定</string>
     <string name="title_setting">設定</string>
     <string name="title_device_create">新增裝置</string>
 
