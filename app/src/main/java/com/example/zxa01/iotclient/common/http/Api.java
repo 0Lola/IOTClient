@@ -1,7 +1,5 @@
-package com.example.zxa01.iotclient.http;
+package com.example.zxa01.iotclient.common.http;
 
-import com.example.zxa01.iotclient.home.device.model.DeviceModel;
-import com.example.zxa01.iotclient.home.device.model.DevicesModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -11,6 +9,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 
 public class Api {
 
@@ -38,6 +37,10 @@ public class Api {
     public interface ApiInterface {
         @GET("/api/breeds/list/all")
         Call<Object> getDevices();
+
+        @POST("/api/breeds/list/all")
+        Call<Object> login();
+
 //        @GET("/api/breed/{breed}/images")
 //        Call<DogBreedImages> getImagesByBreed(@Path("breed") String breed);
 

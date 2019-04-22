@@ -1,39 +1,38 @@
 package com.example.zxa01.iotclient.home;
+import com.example.zxa01.iotclient.R;
+import com.example.zxa01.iotclient.databinding.ActivityHomeBinding;
+import com.example.zxa01.iotclient.home.device.view.DeviceFragment;
+import com.example.zxa01.iotclient.home.device.viewModel.DeviceViewModel;
+import com.example.zxa01.iotclient.home.record.RecordFragment;
+import com.example.zxa01.iotclient.home.setting.SettingFragment;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import com.example.zxa01.iotclient.R;
-import com.example.zxa01.iotclient.databinding.ActivityHomeBinding;
-import com.example.zxa01.iotclient.home.device.view.DeviceFragment;
-import com.example.zxa01.iotclient.home.device.viewModel.DevicesViewModel;
-import com.example.zxa01.iotclient.home.privacy.PrivacyFragment;
-import com.example.zxa01.iotclient.home.setting.SettingFragment;
+import android.databinding.DataBindingUtil;
 
 public class HomeActivity extends AppCompatActivity implements
         DeviceFragment.OnFragmentInteractionListener,
-        PrivacyFragment.OnFragmentInteractionListener,
+        RecordFragment.OnFragmentInteractionListener,
         SettingFragment.OnFragmentInteractionListener {
 
-    /* data binding */
     private ActivityHomeBinding binding;
 
     /* fragments of HomeActivity */
     private DeviceFragment mDeviceFragment = new DeviceFragment();
-    private PrivacyFragment mPrivacyFragment = new PrivacyFragment();
+    private RecordFragment mRecordFragment = new RecordFragment();
     private SettingFragment mSettingFragment = new SettingFragment();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_home);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
 
-        /* init */
         setupFragment(binding.navigation);
         showFragment(mDeviceFragment);
     }
@@ -51,7 +50,7 @@ public class HomeActivity extends AppCompatActivity implements
     }
 
     /* onItemSelected of fragment */
-    private void setupFragment(BottomNavigationView view){
+    private void setupFragment(BottomNavigationView view) {
         view.setOnNavigationItemSelectedListener(
                 menuItem -> {
                     switch (menuItem.getItemId()) {
@@ -59,7 +58,7 @@ public class HomeActivity extends AppCompatActivity implements
                             showFragment(mDeviceFragment);
                             return true;
                         case R.id.navigation_privacy:
-                            showFragment(mPrivacyFragment);
+                            showFragment(mRecordFragment);
                             return true;
                         case R.id.navigation_setting:
                             showFragment(mSettingFragment);
@@ -80,10 +79,12 @@ public class HomeActivity extends AppCompatActivity implements
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode == 0) {
-            if (resultCode == RESULT_OK) {
-                new DevicesViewModel().createDevice(intent.getStringExtra("SCAN_RESULT"));
-            }
+        if (resultCode == RESULT_OK) {
+            new DeviceViewModel().createDevice(intent.getStringExtra("SCAN_RESULT"));
+        } else {
+            new AlertDialog.Builder(this)
+                    .setMessage(R.string.qrcode_error)
+                    .show();
         }
     }
 }

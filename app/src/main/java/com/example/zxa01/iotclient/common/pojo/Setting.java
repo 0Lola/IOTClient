@@ -1,4 +1,4 @@
-package com.example.zxa01.iotclient.pojo;
+package com.example.zxa01.iotclient.common.pojo;
 
 public class Setting {
     private String key;

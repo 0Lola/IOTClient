@@ -1,4 +1,4 @@
-package com.example.zxa01.iotclient.home.privacy;
+package com.example.zxa01.iotclient.home.record;
 
 import android.content.Context;
 import android.net.Uri;
@@ -13,12 +13,12 @@ import com.example.zxa01.iotclient.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link PrivacyFragment.OnFragmentInteractionListener} interface
+ * {@link RecordFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link PrivacyFragment#newInstance} factory method to
+ * Use the {@link RecordFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PrivacyFragment extends Fragment {
+public class RecordFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,7 +30,7 @@ public class PrivacyFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public PrivacyFragment() {
+    public RecordFragment() {
         // Required empty public constructor
     }
 
@@ -43,8 +43,8 @@ public class PrivacyFragment extends Fragment {
      * @return A new instance of fragment PrivacyFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PrivacyFragment newInstance(String param1, String param2) {
-        PrivacyFragment fragment = new PrivacyFragment();
+    public static RecordFragment newInstance(String param1, String param2) {
+        RecordFragment fragment = new RecordFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,7 +65,7 @@ public class PrivacyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_privacy, container, false);
+        return inflater.inflate(R.layout.fragment_record, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

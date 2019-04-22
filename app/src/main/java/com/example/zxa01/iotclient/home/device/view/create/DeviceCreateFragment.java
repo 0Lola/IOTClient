@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.zxa01.iotclient.R;
 import com.example.zxa01.iotclient.databinding.FragmentDeviceCreateBinding;
-import com.example.zxa01.iotclient.home.device.viewModel.DevicesViewModel;
+import com.example.zxa01.iotclient.home.device.viewModel.DeviceViewModel;
 
 public class DeviceCreateFragment extends DialogFragment {
 
@@ -34,14 +34,10 @@ public class DeviceCreateFragment extends DialogFragment {
         return new AlertDialog.Builder(getActivity())
                 .setView(R.layout.fragment_device_create)
                 .setNeutralButton(R.string.button_qrcode,
-                        (dialog, whichButton) -> {
-                            qrcodeIntent();
-                        }
+                        (dialog, whichButton) -> qrcodeIntent()
                 )
                 .setPositiveButton(R.string.button_correct,
-                        (dialog, whichButton) -> {
-                            new DevicesViewModel().createDevice("address");
-                        }
+                        (dialog, whichButton) -> new DeviceViewModel().createDevice("address")
                 )
                 .setNegativeButton(R.string.button_cancel, (dialog, whichButton) -> {
                 })

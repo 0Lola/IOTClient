@@ -9,18 +9,18 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.example.zxa01.iotclient.BR;
-import com.example.zxa01.iotclient.home.device.model.DeviceModel;
-import com.example.zxa01.iotclient.home.device.viewModel.DevicesViewModel;
+import com.example.zxa01.iotclient.common.pojo.device.Device;
+import com.example.zxa01.iotclient.home.device.viewModel.DeviceViewModel;
 
 import java.util.List;
 
 public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHolder> {
 
     private int layoutId;
-    private List<DeviceModel> deviceList;
-    private DevicesViewModel viewModel;
+    private List<Device> deviceList;
+    private DeviceViewModel viewModel;
 
-    public DeviceAdapter(@LayoutRes int layoutId, DevicesViewModel viewModel) {
+    public DeviceAdapter(@LayoutRes int layoutId, DeviceViewModel viewModel) {
         this.layoutId = layoutId;
         this.viewModel = viewModel;
     }
@@ -50,7 +50,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
         return getLayoutIdForPosition(position);
     }
 
-    public void setDevices(List<DeviceModel> deviceList) {
+    public void setDevices(List<Device> deviceList) {
         this.deviceList = deviceList;
     }
 
@@ -63,7 +63,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
             this.binding = binding;
         }
 
-        void bind(DevicesViewModel viewModel, Integer position) {
+        void bind(DeviceViewModel viewModel, Integer position) {
             viewModel.getDeviceAt(position);
             binding.setVariable(BR.viewModel, viewModel);
             binding.setVariable(BR.position, position);

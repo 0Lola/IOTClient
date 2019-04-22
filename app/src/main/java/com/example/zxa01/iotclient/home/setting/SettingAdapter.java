@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.zxa01.iotclient.R;
-import com.example.zxa01.iotclient.pojo.Setting;
+import com.example.zxa01.iotclient.common.pojo.Setting;
 
 import java.util.LinkedList;
 

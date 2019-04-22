@@ -10,15 +10,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.example.zxa01.iotclient.R;
 import com.example.zxa01.iotclient.databinding.FragmentDeviceBinding;
-import com.example.zxa01.iotclient.home.device.viewModel.DevicesViewModel;
+import com.example.zxa01.iotclient.home.device.viewModel.DeviceViewModel;
 import com.example.zxa01.iotclient.home.device.view.create.DeviceCreateFragment;
 
 public class DeviceFragment extends Fragment {
 
     private FragmentDeviceBinding binding;
-    private DevicesViewModel viewModel = new DevicesViewModel();
+    private DeviceViewModel viewModel;
 
     public DeviceFragment() {
     }
@@ -31,8 +32,11 @@ public class DeviceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_device, container, false);
+        viewModel = new DeviceViewModel(binding.getRoot().getContext());
         binding.setViewModel(viewModel);
-        setup();
+        binding.fab.setOnClickListener(item -> drawDialog());
+        binding.deviceRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        init();
         return binding.getRoot();
     }
 
@@ -46,9 +50,7 @@ public class DeviceFragment extends Fragment {
         super.onDetach();
     }
 
-    private void setup() {
-        binding.fab.setOnClickListener(item -> drawDialog());
-        binding.deviceRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+    private void init() {
         viewModel.refreshDevices();
         viewModel.getDevices().observe(this, deviceList -> viewModel.setAdapter(deviceList));
     }
@@ -62,6 +64,7 @@ public class DeviceFragment extends Fragment {
         fragmentTransaction.addToBackStack(null);
         new DeviceCreateFragment().show(fragmentTransaction, String.valueOf(R.string.dialog));
     }
+
 
     public interface OnFragmentInteractionListener {
         void onDeviceFragment(Uri uri);

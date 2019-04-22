@@ -1,21 +1,27 @@
 <resources>
 
+    <!--Title-->
+    <string name="title_detail">裝置資訊</string>
+    <string name="title_privacy">隱私政策</string>
+    <string name="title_setting">設定</string>
+    <string name="title_device_create">新增裝置</string>
+
     <!--Home-->
     <string name="app_name">IOTClient</string>
-    <string name="title_device">Device</string>
-    <string name="title_privacy">Privacy</string>
-    <string name="title_setting">Setting</string>
+    <string name="nav_device">Device</string>
+    <string name="nav_privacy">Privacy</string>
+    <string name="nav_setting">Setting</string>
 
     <!--Create-->
-    <string name="title_device_create">Create New Device</string>
-    <string name="input_placeholder">the address of device</string>
+    <string name="input_placeholder">請輸入裝置的UDN</string>
     <string name="button_qrcode">QRcode</string>
-    <string name="button_correct">Correct</string>
-    <string name="button_cancel">Cancel</string>
+    <string name="button_correct">新增</string>
+    <string name="button_cancel">返回</string>
+    <string name="qrcode_error">格式錯誤</string>
 
 
     <!--Login-->
-    <string name="action_sign_in">Log in</string>
+    <string name="action_sign_in">登入</string>
     <string name="login_iot_gateway">Login to IOT gateway</string>
     <string name="prompt_gateway">Gateway address</string>
     <string name="prompt_account">Account</string>

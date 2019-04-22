@@ -1,4 +1,4 @@
-package com.example.zxa01.iotclient.bindings;
+package com.example.zxa01.iotclient.common.bindings;
 
 import android.databinding.BindingAdapter;
 import android.support.v7.widget.LinearLayoutManager;

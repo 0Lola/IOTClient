@@ -1,9 +1,8 @@
-package com.example.zxa01.iotclient.http;
+package com.example.zxa01.iotclient.common.http;
 
 import java.io.IOException;
 
 import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

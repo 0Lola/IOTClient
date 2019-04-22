@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="position"
             type="java.lang.Integer" />
 
         <variable
             name="viewModel"
-            type="com.example.zxa01.iotclient.home.device.viewModel.DevicesViewModel" />
+            type="com.example.zxa01.iotclient.home.device.viewModel.DeviceViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -20,6 +21,7 @@
         android:layout_margin="@dimen/margin_sm"
         android:background="@drawable/shadow"
         android:elevation="2dp"
+        android:onClick="@{()->viewModel.onDevicesClick(position)}"
         android:padding="@dimen/margin">
 
         <ImageView
@@ -38,12 +40,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="8dp"
+            android:text="@{viewModel.getDeviceAt(position).name}"
             android:textColor="@color/colorGray"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/text_device_subtitle"
             app:layout_constraintStart_toEndOf="@+id/image_device"
             app:layout_constraintTop_toTopOf="@+id/image_device"
-            android:text="@{viewModel.getDeviceAt(position).device.name}"
             tools:text="device name" />
 
         <TextView
@@ -51,14 +53,10 @@
             android:layout_width="285dp"
             android:layout_height="20dp"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="8dp"
+            android:text="@{viewModel.getDeviceAt(position).UDN}"
             app:layout_constraintBottom_toBottomOf="@+id/image_device"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.050"
             app:layout_constraintStart_toEndOf="@+id/image_device"
-            android:text="@{viewModel.getDeviceAt(position).device.subTitle}"
-            tools:text="subtitle"
-            />
+            tools:text="subtitle" />
 
         <TextView
             android:id="@+id/text_device_status"
@@ -69,6 +67,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/image_device"
             tools:text="connection" />
+
     </android.support.constraint.ConstraintLayout>
 
 </layout>
