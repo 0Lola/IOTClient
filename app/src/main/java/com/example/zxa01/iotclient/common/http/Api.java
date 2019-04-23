@@ -49,6 +49,13 @@ public class Api {
         @GET("/api/breeds/list/all")
         Call<Object> getPrivacyPolicyReport();
 
+
+        @GET("/api/breeds/list/all")
+        Call<Object> updatePrivacyPolicyChoice();
+
+        @GET("/api/breeds/list/all")
+        Call<Object> getRecord();
+
 //        @GET("/api/breed/{breed}/images")
 //        Call<DogBreedImages> getImagesByBreed(@Path("breed") String breed);
 

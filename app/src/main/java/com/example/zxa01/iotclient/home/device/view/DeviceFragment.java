@@ -52,7 +52,7 @@ public class DeviceFragment extends Fragment {
 
     private void init() {
         viewModel.refreshDevices();
-        viewModel.getDevices().observe(this, deviceList -> viewModel.setAdapter(deviceList));
+        viewModel.observeDevicesMLD().observe(this, viewModel::setAdapter);
     }
 
     private void drawDialog() {

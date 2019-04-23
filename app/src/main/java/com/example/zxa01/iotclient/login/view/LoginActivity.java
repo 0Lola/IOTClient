@@ -34,8 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void init() {
-        viewModel.isAuthorized().observe(this,
-                isAuthorized -> viewModel.checkAuthorized(isAuthorized));
+        viewModel.isAuthorized().observe(this,viewModel::checkAuthorized);
     }
 }
 

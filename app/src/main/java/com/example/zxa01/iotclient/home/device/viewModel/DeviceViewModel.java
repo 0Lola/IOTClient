@@ -32,8 +32,8 @@ public class DeviceViewModel extends ViewModel {
         deviceModel.fetchDevices();
     }
 
-    public MutableLiveData<List<Device>> getDevices() {
-        return deviceModel.getDevices();
+    public MutableLiveData<List<Device>> observeDevicesMLD() {
+        return deviceModel.getDevicesMLD();
     }
 
     public void createDevice(String address) {
@@ -46,18 +46,18 @@ public class DeviceViewModel extends ViewModel {
      */
 
     public Device getDeviceAt(Integer index) {
-        if (deviceModel.getDevices().getValue() != null &&
+        if (deviceModel.getDevicesMLD().getValue() != null &&
                 index != null &&
-                deviceModel.getDevices().getValue().size() > index) {
-            return deviceModel.getDevices().getValue().get(index);
+                deviceModel.getDevicesMLD().getValue().size() > index) {
+            return deviceModel.getDevicesMLD().getValue().get(index);
         }
         return null;
     }
 
     public void onDevicesClick(Integer index) {
-        if (deviceModel.getDevices().getValue() != null &&
+        if (deviceModel.getDevicesMLD().getValue() != null &&
                 index != null &&
-                deviceModel.getDevices().getValue().size() > index) {
+                deviceModel.getDevicesMLD().getValue().size() > index) {
             // TODO detail of device
             context.startActivity(
                     new Intent(context, DetailActivity.class)
@@ -73,9 +73,9 @@ public class DeviceViewModel extends ViewModel {
         return adapter;
     }
 
-    public void setAdapter(List<Device> deviceList) {
+    public void setAdapter(List<Device> devices) {
         this.isLoading.set(false);
-        this.adapter.setDevices(deviceList);
+        this.adapter.setDevices(devices);
         this.adapter.notifyDataSetChanged();
     }
 

@@ -2,8 +2,7 @@ package com.example.zxa01.iotclient.home;
 import com.example.zxa01.iotclient.R;
 import com.example.zxa01.iotclient.databinding.ActivityHomeBinding;
 import com.example.zxa01.iotclient.home.device.view.DeviceFragment;
-import com.example.zxa01.iotclient.home.device.viewModel.DeviceViewModel;
-import com.example.zxa01.iotclient.home.record.RecordFragment;
+import com.example.zxa01.iotclient.home.record.view.RecordFragment;
 import com.example.zxa01.iotclient.home.setting.SettingFragment;
 import android.content.Intent;
 import android.net.Uri;
@@ -82,7 +81,7 @@ public class HomeActivity extends AppCompatActivity implements
 //            new DeviceViewModel().createDevice(intent.getStringExtra("SCAN_RESULT"));
         } else {
             new AlertDialog.Builder(this)
-                    .setMessage(R.string.qrcode_error)
+                    .setMessage(R.string.create_qrcode_error)
                     .show();
         }
     }

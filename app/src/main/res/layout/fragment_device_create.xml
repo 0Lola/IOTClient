@@ -25,7 +25,7 @@
             android:background="@color/colorLighter"
             android:fontFamily="monospace"
             android:padding="@dimen/padding"
-            android:text="@string/title_device_create"
+            android:text="@string/create_title"
             android:textAlignment="center"
             android:textSize="@dimen/font" />
 
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_sm"
-            android:hint="@string/input_placeholder"
+            android:hint="@string/create_input_placeholder"
             android:padding="@dimen/padding_lg" />
 
 

@@ -1,21 +1,25 @@
 package com.example.zxa01.iotclient.home.device.model;
+
 import com.example.zxa01.iotclient.common.http.Api;
 import com.example.zxa01.iotclient.common.pojo.device.Device;
 import com.example.zxa01.iotclient.common.pojo.device.Manufacturer;
 import com.example.zxa01.iotclient.common.pojo.device.Model;
+
 import android.arch.lifecycle.MutableLiveData;
 import android.databinding.BaseObservable;
 import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DeviceModel extends BaseObservable {
 
-    private List<Device> deviceList;
-    private MutableLiveData<List<Device>> devices;
+    private List<Device> devices = new ArrayList<>();
+    private MutableLiveData<List<Device>> devicesMLD = new MutableLiveData<>();
 
     // fake
     private Device oxygenDevice = new Device()
@@ -31,21 +35,17 @@ public class DeviceModel extends BaseObservable {
                     .setDescription("本設備是為符合不同領域及照護應用而設計，並把這些特色融入小如指節的分析儀中，可在數秒內量測出準確可靠的血氧及心跳值。")
                     .setUrl("https://www.amazon.com/Pulse-Oximeter-Blood-Oxygen-Monitor/dp/B00HXXO332"))
             .setUPC("B00HXXO332")
-            .setLocation("25.013068, 121.541651")
-            .setStatus(Device.Status.Disconnected);
-
+            .setLocation("25.013068, 121.541651");
 
     public DeviceModel() {
-        deviceList = new ArrayList<>();
-        devices = new MutableLiveData<>();
     }
 
     public void addDevice(Device device) {
-        deviceList.add(device);
+        devices.add(device);
     }
 
-    public MutableLiveData<List<Device>> getDevices() {
-        return devices;
+    public MutableLiveData<List<Device>> getDevicesMLD() {
+        return devicesMLD;
     }
 
     public void fetchDevices() {
@@ -53,10 +53,8 @@ public class DeviceModel extends BaseObservable {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
                 // TODO transfer response
-                Log.i("Test", response.message());
                 addDevice(oxygenDevice);
-                addDevice(oxygenDevice);
-                devices.setValue(deviceList);
+                devicesMLD.setValue(devices);
             }
 
             @Override

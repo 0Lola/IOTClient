@@ -12,22 +12,38 @@
             type="com.example.zxa01.iotclient.privacy.viewModel.PrivacyViewModel" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
         tools:context=".privacy.view.PrivacyActivity">
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:secondaryProgress="40"
+            android:theme="@style/ProgressTheme"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />
+
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE}"
+            tools:context=".privacy.view.PrivacyActivity">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/margin_lg"
+                android:layout_marginLeft="@dimen/margin_lg"
+                android:layout_marginTop="@dimen/margin_lg"
+                android:layout_marginRight="@dimen/margin_lg"
+                android:layout_marginBottom="@dimen/margin"
                 android:background="@drawable/border_bottom_xl"
                 android:orientation="horizontal"
                 android:padding="@dimen/padding_sm">
@@ -37,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="隱私政策報告"
+                    android:text="@string/title_privacy"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/font_lg" />
 
@@ -46,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="版本 1.0"
+                    android:text='@{@string/privacy_version+" "+viewModel.privacyPolicyReport.version}'
                     android:textAlignment="textEnd" />
             </LinearLayout>
 
@@ -55,11 +71,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_lg"
-                android:layout_marginTop="@dimen/margin_sm"
                 android:layout_marginRight="@dimen/margin_lg"
+                android:paddingBottom="@dimen/margin"
                 android:background="@drawable/border_bottom"
-                android:padding="@dimen/padding_sm"
-                android:text="描述" />
+                android:text="@{viewModel.privacyPolicyReport.description}" />
 
             <TextView
                 android:id="@+id/textViewDescription2"
@@ -69,7 +84,7 @@
                 android:layout_marginTop="@dimen/margin_sm"
                 android:layout_marginRight="@dimen/margin_lg"
                 android:padding="@dimen/padding_sm"
-                android:text="我們會依照下列政策收集相關資料" />
+                android:text="@string/privacy_request" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/privacy_recycler_view"
@@ -82,5 +97,5 @@
 
         </LinearLayout>
 
-    </android.support.constraint.ConstraintLayout>
+    </FrameLayout>
 </layout>

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -21,13 +19,21 @@
         android:layout_margin="@dimen/margin_sm"
         android:background="@drawable/shadow"
         android:elevation="2dp"
-        android:onClick="@{()->viewModel.onChangeClick(position)}"
         android:padding="@dimen/margin">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/title_privacy"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/font_lg" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,7 +44,7 @@
                     android:id="@+id/textViewPrivacy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="隱私政策 1"
+                    android:text='@{@string/privacy_title+" "+String.valueOf(position+1)}'
                     android:textColor="@color/colorGray"
                     android:textSize="@dimen/font" />
 
@@ -47,8 +53,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="拒絕/同意 "
-                    android:onClick="@{()->viewModel.onChangeClick(position)}"
+                    android:onClick="@{(view)->viewModel.onChangeClick(position,view)}"
+                    android:text="@string/privacy_content"
                     android:textAlignment="textEnd"
                     android:thumbTextPadding="@dimen/padding_lg" />
 

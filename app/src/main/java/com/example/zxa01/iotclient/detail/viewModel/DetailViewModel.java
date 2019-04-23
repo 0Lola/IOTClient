@@ -1,5 +1,6 @@
 package com.example.zxa01.iotclient.detail.viewModel;
 
+import com.example.zxa01.iotclient.R;
 import com.example.zxa01.iotclient.common.pojo.device.Device;
 import com.example.zxa01.iotclient.detail.model.DetailModel;
 import com.example.zxa01.iotclient.privacy.view.PrivacyActivity;
@@ -9,6 +10,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
+import android.view.Gravity;
+import android.widget.Toast;
 
 public class DetailViewModel extends ViewModel {
 
@@ -43,5 +46,8 @@ public class DetailViewModel extends ViewModel {
 
     public void downloadPrivacyReport() {
         // TODO download
+        Toast toast = Toast.makeText(context, R.string.detail_report_download, Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.BOTTOM,0,15);
+        toast.show();
     }
 }

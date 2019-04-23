@@ -2,22 +2,41 @@
 
     <!--Title-->
     <string name="title_detail">裝置資訊</string>
-    <string name="title_privacy">隱私偏好設定</string>
+    <string name="title_privacy">隱私選擇設定</string>
     <string name="title_setting">設定</string>
-    <string name="title_device_create">新增裝置</string>
 
     <!--Home-->
     <string name="app_name">IOTClient</string>
     <string name="nav_device">Device</string>
-    <string name="nav_privacy">Privacy</string>
+    <string name="nav_record">Record</string>
     <string name="nav_setting">Setting</string>
 
     <!--Create-->
-    <string name="input_placeholder">請輸入裝置的UDN</string>
-    <string name="button_qrcode">QRcode</string>
-    <string name="button_correct">新增</string>
-    <string name="button_cancel">返回</string>
-    <string name="qrcode_error">格式錯誤</string>
+    <string name="create_title">新增裝置</string>
+    <string name="create_input_placeholder">請輸入裝置的UDN</string>
+    <string name="create_button_qrcode">QRcode</string>
+    <string name="create_button_correct">新增</string>
+    <string name="create_button_cancel">返回</string>
+    <string name="create_qrcode_error">格式錯誤</string>
+
+
+    <!--Detail-->
+    <string name="detail_preference_setting">隱私偏好設定</string>
+    <string name="detail_detect_report">檢測報告下載</string>
+    <string name="detail_report_download">下載中...</string>
+
+    <!--Privacy-->
+    <string name="privacy_report_title">隱私政策報告</string>
+    <string name="privacy_version">版本</string>
+    <string name="privacy_request">我們會依照下列政策收集相關資料</string>
+    <string name="privacy_title">隱私政策</string>
+    <string name="privacy_content">拒絕/同意</string>
+    <string name="privacy_loading_title">隱私選擇儲存中</string>
+    <string name="privacy_loading_message">請稍後...</string>
+
+    <!--Record-->
+    <string name="record_title">隱私選擇記錄</string>
+    <string name="record_view">檢視</string>
 
 
     <!--Login-->

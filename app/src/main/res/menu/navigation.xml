@@ -9,7 +9,7 @@
     <item
         android:id="@+id/navigation_privacy"
         android:icon="@drawable/ic_lock_outline_black_24dp"
-        android:title="@string/nav_privacy" />
+        android:title="@string/nav_record" />
 
     <item
         android:id="@+id/navigation_setting"

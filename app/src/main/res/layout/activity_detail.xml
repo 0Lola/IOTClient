@@ -51,7 +51,7 @@
                             android:layout_width="@dimen/layout_width"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/padding_sm"
-                            android:text="隱私政策"
+                            android:text="@string/privacy_title"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorAccent"
                             android:textSize="@dimen/font"
@@ -62,20 +62,20 @@
                             style="@style/Widget.AppCompat.Button.Colored"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/font"
+                            android:textSize="@dimen/font_sm"
                             android:padding="@dimen/padding"
                             android:onClick="@{()->viewModel.settingPrivacy()}"
-                            android:text="偏好設定" />
+                            android:text="@string/detail_preference_setting" />
 
                         <Button
                             android:id="@+id/buttonPrivacyReport"
                             style="@style/Widget.AppCompat.Button.Colored"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/font"
+                            android:textSize="@dimen/font_sm"
                             android:padding="@dimen/padding"
                             android:onClick="@{()->viewModel.downloadPrivacyReport()}"
-                            android:text="檢測報告下載" />
+                            android:text="@string/detail_detect_report" />
 
                     </LinearLayout>
 

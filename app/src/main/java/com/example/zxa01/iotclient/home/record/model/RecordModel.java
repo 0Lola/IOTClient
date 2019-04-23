@@ -1,10 +1,8 @@
-package com.example.zxa01.iotclient.privacy.model;
+package com.example.zxa01.iotclient.home.record.model;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.databinding.BaseObservable;
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.Toast;
 
 import com.example.zxa01.iotclient.common.http.Api;
 import com.example.zxa01.iotclient.common.pojo.device.Device;
@@ -22,16 +20,18 @@ import com.example.zxa01.iotclient.common.pojo.privacy.p3p.Remedy;
 import com.example.zxa01.iotclient.common.pojo.privacy.p3p.Retention;
 import com.example.zxa01.iotclient.common.pojo.privacy.p3p.Statement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PrivacyModel extends BaseObservable {
+public class RecordModel extends BaseObservable {
 
-    private MutableLiveData<Boolean> isUploadMLD;
-    private MutableLiveData<PrivacyPolicyReport> privacyPolicyReportMLD;
+    private List<PrivacyPolicyReport> privacyPolicyReports = new ArrayList<>();
+    private MutableLiveData<List<PrivacyPolicyReport>> privacyPolicyReportsMLD = new MutableLiveData<>();
 
-    // fake p3p
     private Device oxygenDevice = new Device()
             .setUDN("a1252c49-4188-4e6d-a32e-66604c664fb8")
             .setName("指尖式血氧機")
@@ -107,56 +107,35 @@ public class PrivacyModel extends BaseObservable {
                                     .setEntity("健康促進中心")
                                     .setType(Recipient.Type.OURS))
                             .setRetention(Retention.STATED_PURPOSE)));
+    public RecordModel(){
 
-    public PrivacyModel() {
-        privacyPolicyReportMLD = new MutableLiveData<>();
-        privacyPolicyReportMLD.setValue(new PrivacyPolicyReport());
-        isUploadMLD = new MutableLiveData<>();
-        isUploadMLD.setValue(false);
     }
 
-    public MutableLiveData<PrivacyPolicyReport> getPrivacyPolicyReportMLD() {
-        return privacyPolicyReportMLD;
+    public void addPrivacyPolicyReport(PrivacyPolicyReport privacyPolicyReport){
+        privacyPolicyReports.add(privacyPolicyReport);
     }
 
-    public void fetchPrivacyPolicyReport() {
+    public MutableLiveData<List<PrivacyPolicyReport>> getPrivacyPolicyReportsMLD() {
+        return privacyPolicyReportsMLD;
+    }
+
+    public void fetchRecord() {
         Callback<Object> callback = new Callback<Object>() {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
                 // TODO transfer response
-                privacyPolicyReportMLD.setValue(oxygenPrivacyPolicyReport);
+                addPrivacyPolicyReport(oxygenPrivacyPolicyReport);
+                privacyPolicyReportsMLD.setValue(privacyPolicyReports);
             }
 
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
-                Log.e("fetchPrivacyPolicyReport - onFailure()", t.getMessage(), t);
+                Log.e("fetchDevices - onFailure()", t.getMessage(), t);
             }
         };
 
-        Api.getApi().getPrivacyPolicyReport().enqueue(callback);
+        Api.getApi().getRecord().enqueue(callback);
 
-    }
-
-    public MutableLiveData<Boolean> getIsUploadMLD() {
-        return isUploadMLD;
-    }
-
-    public void updatePrivacyPolicyChoice(String privacyId, boolean consent) {
-        isUploadMLD.setValue(true);
-        Callback<Object> callback = new Callback<Object>() {
-            @Override
-            public void onResponse(Call<Object> call, Response<Object> response) {
-                // TODO transfer response
-                isUploadMLD.setValue(false);
-            }
-
-            @Override
-            public void onFailure(Call<Object> call, Throwable t) {
-                Log.e("updatePrivacyPolicyChoice - onFailure()", t.getMessage(), t);
-            }
-        };
-
-        Api.getApi().updatePrivacyPolicyChoice().enqueue(callback);
     }
 
 }

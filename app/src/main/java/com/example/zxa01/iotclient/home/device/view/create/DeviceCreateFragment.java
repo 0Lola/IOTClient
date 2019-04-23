@@ -35,13 +35,13 @@ public class DeviceCreateFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         return new AlertDialog.Builder(getActivity())
                 .setView(R.layout.fragment_device_create)
-                .setNeutralButton(R.string.button_qrcode,
+                .setNeutralButton(R.string.create_button_qrcode,
                         (dialog, whichButton) -> qrcodeIntent()
                 )
-                .setPositiveButton(R.string.button_correct,
+                .setPositiveButton(R.string.create_button_correct,
                         (dialog, whichButton) -> viewModel.createDevice("address")
                 )
-                .setNegativeButton(R.string.button_cancel, (dialog, whichButton) -> {
+                .setNegativeButton(R.string.create_button_cancel, (dialog, whichButton) -> {
                 })
                 .create();
     }
