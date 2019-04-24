@@ -4,8 +4,6 @@ import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toolbar;
-
 import com.example.zxa01.iotclient.R;
 import com.example.zxa01.iotclient.databinding.ActivityDetailBinding;
 import com.example.zxa01.iotclient.detail.viewModel.DetailViewModel;
@@ -28,6 +26,7 @@ public class DetailActivity extends AppCompatActivity {
 
     public void init(){
         viewModel.fetchDevice();
+        viewModel.observeDeviceMLD().observe(this,viewModel::setDevice);
     }
 
     @Override

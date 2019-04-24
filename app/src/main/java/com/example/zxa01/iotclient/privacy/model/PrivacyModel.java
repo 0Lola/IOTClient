@@ -3,9 +3,6 @@ package com.example.zxa01.iotclient.privacy.model;
 import android.arch.lifecycle.MutableLiveData;
 import android.databinding.BaseObservable;
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.Toast;
-
 import com.example.zxa01.iotclient.common.http.Api;
 import com.example.zxa01.iotclient.common.pojo.device.Device;
 import com.example.zxa01.iotclient.common.pojo.device.Manufacturer;

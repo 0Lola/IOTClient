@@ -4,7 +4,7 @@ import com.example.zxa01.iotclient.R;
 import com.example.zxa01.iotclient.common.pojo.device.Device;
 import com.example.zxa01.iotclient.detail.model.DetailModel;
 import com.example.zxa01.iotclient.privacy.view.PrivacyActivity;
-
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 import android.content.Intent;
@@ -29,13 +29,15 @@ public class DetailViewModel extends ViewModel {
         detailModel.fetchDevice();
     }
 
-    public ObservableField<Device> getDevice() {
-        isLoading.set(false);
-        return detailModel.getDevice();
+    public MutableLiveData<Device> observeDeviceMLD() {
+        return detailModel.getDeviceMLD();
     }
 
     public void setDevice(Device device) {
-        this.device.set(device);
+        if (device.getUDN() != null) {
+            this.isLoading.set(false);
+            this.device.set(device);
+        }
     }
 
     public void settingPrivacy() {
@@ -47,7 +49,7 @@ public class DetailViewModel extends ViewModel {
     public void downloadPrivacyReport() {
         // TODO download
         Toast toast = Toast.makeText(context, R.string.detail_report_download, Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.BOTTOM,0,15);
+        toast.setGravity(Gravity.BOTTOM, 0, 15);
         toast.show();
     }
 }

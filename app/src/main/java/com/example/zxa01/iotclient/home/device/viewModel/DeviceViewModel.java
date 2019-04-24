@@ -36,6 +36,9 @@ public class DeviceViewModel extends ViewModel {
         return deviceModel.getDevicesMLD();
     }
 
+    /**
+     * create
+     */
     public void createDevice(String address) {
         deviceModel.createDevice(address);
         refreshDevices();

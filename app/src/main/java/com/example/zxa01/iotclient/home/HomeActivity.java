@@ -3,7 +3,7 @@ import com.example.zxa01.iotclient.R;
 import com.example.zxa01.iotclient.databinding.ActivityHomeBinding;
 import com.example.zxa01.iotclient.home.device.view.DeviceFragment;
 import com.example.zxa01.iotclient.home.record.view.RecordFragment;
-import com.example.zxa01.iotclient.home.setting.SettingFragment;
+import com.example.zxa01.iotclient.home.setting.view.SettingFragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;

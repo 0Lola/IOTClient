@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -14,16 +15,33 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE}">
+        android:background="@color/colorWhite">
+
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorWhite"
             android:paddingLeft="@dimen/padding"
             android:paddingRight="@dimen/padding"
             android:scrollbarAlwaysDrawHorizontalTrack="true"
             tools:context=".detail.view.DetailActivity">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_lg"
+                    android:padding="@dimen/padding_lg"
+                    android:secondaryProgress="40"
+                    android:theme="@style/ProgressTheme"
+                    android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />
+            </FrameLayout>
 
             <TableLayout
                 android:id="@+id/tableLayout"
@@ -31,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin"
                 android:padding="@dimen/padding_sm"
+                android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE}"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="20dp">
 
@@ -62,20 +81,20 @@
                             style="@style/Widget.AppCompat.Button.Colored"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/font_sm"
-                            android:padding="@dimen/padding"
                             android:onClick="@{()->viewModel.settingPrivacy()}"
-                            android:text="@string/detail_preference_setting" />
+                            android:padding="@dimen/padding"
+                            android:text="@string/detail_preference_setting"
+                            android:textSize="@dimen/font_sm" />
 
                         <Button
                             android:id="@+id/buttonPrivacyReport"
                             style="@style/Widget.AppCompat.Button.Colored"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/font_sm"
-                            android:padding="@dimen/padding"
                             android:onClick="@{()->viewModel.downloadPrivacyReport()}"
-                            android:text="@string/detail_detect_report" />
+                            android:padding="@dimen/padding"
+                            android:text="@string/detail_detect_report"
+                            android:textSize="@dimen/font_sm" />
 
                     </LinearLayout>
 

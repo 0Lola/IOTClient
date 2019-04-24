@@ -1,4 +1,4 @@
-package com.example.zxa01.iotclient.privacy.view;
+package com.example.zxa01.iotclient.home.setting.view;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -7,20 +7,18 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
 import com.example.zxa01.iotclient.BR;
-import com.example.zxa01.iotclient.common.pojo.privacy.PrivacyPolicy;
-import com.example.zxa01.iotclient.privacy.viewModel.PrivacyViewModel;
-
+import com.example.zxa01.iotclient.common.pojo.Setting;
+import com.example.zxa01.iotclient.home.setting.viewModel.SettingViewModel;
 import java.util.List;
 
-public class PrivacyAdapter extends RecyclerView.Adapter<PrivacyAdapter.MyViewHolder> {
+public class SettingAdapter extends RecyclerView.Adapter<SettingAdapter.MyViewHolder> {
 
     private int layoutId;
-    private List<PrivacyPolicy> privacyPolicyList;
-    private PrivacyViewModel viewModel;
+    private List<Setting> settings;
+    private SettingViewModel viewModel;
 
-    public PrivacyAdapter(@LayoutRes int layoutId, PrivacyViewModel viewModel) {
+    public SettingAdapter(@LayoutRes int layoutId, SettingViewModel viewModel) {
         this.layoutId = layoutId;
         this.viewModel = viewModel;
     }
@@ -30,19 +28,19 @@ public class PrivacyAdapter extends RecyclerView.Adapter<PrivacyAdapter.MyViewHo
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(DataBindingUtil.inflate(
+    public SettingAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new SettingAdapter.MyViewHolder(DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()), viewType, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(SettingAdapter.MyViewHolder holder, int position) {
         holder.bind(viewModel, position);
     }
 
     @Override
     public int getItemCount() {
-        return privacyPolicyList == null ? 0 : privacyPolicyList.size();
+        return settings == null ? 0 : settings.size();
     }
 
     @Override
@@ -50,11 +48,12 @@ public class PrivacyAdapter extends RecyclerView.Adapter<PrivacyAdapter.MyViewHo
         return getLayoutIdForPosition(position);
     }
 
-    public void setPrivacyPolicyList(List<PrivacyPolicy> privacyPolicyList) {
-        this.privacyPolicyList = privacyPolicyList;
+
+    public void setSettings(List<Setting> settings) {
+        this.settings = settings;
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder{
 
         final ViewDataBinding binding;
 
@@ -62,13 +61,13 @@ public class PrivacyAdapter extends RecyclerView.Adapter<PrivacyAdapter.MyViewHo
             super(binding.getRoot());
             this.binding = binding;
         }
-
-        void bind(PrivacyViewModel viewModel, Integer position) {
-            viewModel.getPrivacyAt(position);
+        void bind(SettingViewModel viewModel, Integer position) {
+            viewModel.getSettingAt(position);
             binding.setVariable(BR.viewModel, viewModel);
             binding.setVariable(BR.position, position);
             binding.executePendingBindings();
         }
+
 
     }
 

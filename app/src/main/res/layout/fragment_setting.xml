@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".home.setting.SettingFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/setting_recycler_view"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.zxa01.iotclient.home.setting.viewModel.SettingViewModel" />
+    </data>
+
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/recycler_view_setting" />
+        tools:context=".home.setting.view.SettingFragment">
 
-</FrameLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/setting_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:setAdapter="@{viewModel.getAdapter()}"
+            tools:listitem="@layout/recycler_view_setting" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:secondaryProgress="40"
+            android:theme="@style/ProgressTheme"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />
+
+    </FrameLayout>
+
+</layout>

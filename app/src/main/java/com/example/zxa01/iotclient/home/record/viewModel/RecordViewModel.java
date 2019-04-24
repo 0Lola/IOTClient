@@ -33,7 +33,7 @@ public class RecordViewModel extends ViewModel {
         recordModel.fetchRecord();
     }
 
-    public MutableLiveData<List<PrivacyPolicyReport>> observePrivacyPolicyReportsMLDD() {
+    public MutableLiveData<List<PrivacyPolicyReport>> observePrivacyPolicyReportsMLD() {
         return recordModel.getPrivacyPolicyReportsMLD();
     }
 

@@ -4,14 +4,11 @@ import com.example.zxa01.iotclient.common.http.Api;
 import com.example.zxa01.iotclient.common.pojo.device.Device;
 import com.example.zxa01.iotclient.common.pojo.device.Manufacturer;
 import com.example.zxa01.iotclient.common.pojo.device.Model;
-
 import android.arch.lifecycle.MutableLiveData;
 import android.databinding.BaseObservable;
 import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

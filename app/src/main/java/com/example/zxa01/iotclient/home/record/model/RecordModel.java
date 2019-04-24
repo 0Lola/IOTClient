@@ -108,10 +108,9 @@ public class RecordModel extends BaseObservable {
                                     .setType(Recipient.Type.OURS))
                             .setRetention(Retention.STATED_PURPOSE)));
     public RecordModel(){
-
     }
 
-    public void addPrivacyPolicyReport(PrivacyPolicyReport privacyPolicyReport){
+    private void addPrivacyPolicyReport(PrivacyPolicyReport privacyPolicyReport){
         privacyPolicyReports.add(privacyPolicyReport);
     }
 

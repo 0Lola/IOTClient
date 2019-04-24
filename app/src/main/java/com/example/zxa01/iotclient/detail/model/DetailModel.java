@@ -1,6 +1,6 @@
 package com.example.zxa01.iotclient.detail.model;
+import android.arch.lifecycle.MutableLiveData;
 import android.databinding.BaseObservable;
-import android.databinding.ObservableField;
 import android.util.Log;
 import com.example.zxa01.iotclient.common.http.Api;
 import com.example.zxa01.iotclient.common.pojo.device.Device;
@@ -12,14 +12,17 @@ import retrofit2.Response;
 
 public class DetailModel extends BaseObservable {
 
-    private ObservableField<Device> device;
+    private MutableLiveData<Device> deviceMLD = new MutableLiveData<>();
 
     public DetailModel() {
-        device = new ObservableField<>();
     }
 
-    public ObservableField<Device> getDevice(){
-        return device;
+    public void setDeviceMLD(Device device){
+        deviceMLD.setValue(device);
+    }
+
+    public MutableLiveData<Device> getDeviceMLD(){
+        return deviceMLD;
     }
 
     public void fetchDevice() {
@@ -27,8 +30,7 @@ public class DetailModel extends BaseObservable {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
                 // TODO transfer response
-                Log.i("Test", response.message());
-                device.set(new Device()
+                setDeviceMLD(new Device()
                         .setUDN("a1252c49-4188-4e6d-a32e-66604c664fb8")
                         .setName("指尖式血氧機")
                         .setType(Device.Type.Sensor)

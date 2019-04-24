@@ -21,7 +21,7 @@
 
 
     <!--Detail-->
-    <string name="detail_preference_setting">隱私偏好設定</string>
+    <string name="detail_preference_setting">隱私選項設定</string>
     <string name="detail_detect_report">檢測報告下載</string>
     <string name="detail_report_download">下載中...</string>
 
@@ -37,7 +37,6 @@
     <!--Record-->
     <string name="record_title">隱私選擇記錄</string>
     <string name="record_view">檢視</string>
-
 
     <!--Login-->
     <string name="action_sign_in">登入</string>

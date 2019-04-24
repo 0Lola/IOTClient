@@ -16,7 +16,6 @@ import com.example.zxa01.iotclient.home.record.viewModel.RecordViewModel;
 
 public class RecordFragment extends Fragment {
 
-
     private FragmentRecordBinding binding;
     private RecordViewModel viewModel;
 
@@ -50,7 +49,7 @@ public class RecordFragment extends Fragment {
 
     private void init() {
         viewModel.refreshRecord();
-        viewModel.observePrivacyPolicyReportsMLDD().observe(this, viewModel::setAdapter);
+        viewModel.observePrivacyPolicyReportsMLD().observe(this, viewModel::setAdapter);
     }
 
     public interface OnFragmentInteractionListener {
