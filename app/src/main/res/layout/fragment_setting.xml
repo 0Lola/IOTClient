@@ -9,14 +9,14 @@
 
         <variable
             name="viewModel"
-            type="com.example.zxa01.iotclient.home.setting.viewModel.SettingViewModel" />
+            type="com.example.zxa01.iotclient.component.home.setting.SettingViewModel" />
     </data>
 
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".home.setting.view.SettingFragment">
+        tools:context=".component.home.setting.SettingFragment">
 
 
         <android.support.v7.widget.RecyclerView

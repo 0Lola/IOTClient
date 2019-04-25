@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.zxa01.iotclient.detail.viewModel.DetailViewModel" />
+            type="com.example.zxa01.iotclient.component.detail.DetailViewModel" />
     </data>
 
     <ScrollView
@@ -24,7 +24,7 @@
             android:paddingLeft="@dimen/padding"
             android:paddingRight="@dimen/padding"
             android:scrollbarAlwaysDrawHorizontalTrack="true"
-            tools:context=".detail.view.DetailActivity">
+            tools:context=".component.detail.DetailActivity">
 
             <FrameLayout
                 android:layout_width="match_parent"

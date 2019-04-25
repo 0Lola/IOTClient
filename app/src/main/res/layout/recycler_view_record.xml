@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.zxa01.iotclient.home.record.viewModel.RecordViewModel" />
+            type="com.example.zxa01.iotclient.component.home.record.RecordViewModel" />
     </data>
 
     <LinearLayout

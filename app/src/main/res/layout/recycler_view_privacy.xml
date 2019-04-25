@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.zxa01.iotclient.privacy.viewModel.PrivacyViewModel" />
+            type="com.example.zxa01.iotclient.component.privacy.PrivacyViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout

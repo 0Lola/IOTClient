@@ -9,13 +9,13 @@
 
         <variable
             name="viewModel"
-            type="com.example.zxa01.iotclient.home.record.viewModel.RecordViewModel" />
+            type="com.example.zxa01.iotclient.component.home.record.RecordViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".home.record.view.RecordFragment">
+        tools:context=".component.home.record.RecordFragment">
 
         <ProgressBar
             android:id="@+id/progressBar"

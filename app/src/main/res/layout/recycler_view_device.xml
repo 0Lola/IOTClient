@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.zxa01.iotclient.home.device.viewModel.DeviceViewModel" />
+            type="com.example.zxa01.iotclient.component.home.device.DeviceViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
