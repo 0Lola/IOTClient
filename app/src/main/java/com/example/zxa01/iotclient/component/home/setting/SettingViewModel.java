@@ -3,10 +3,13 @@ package com.example.zxa01.iotclient.component.home.setting;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.ObservableBoolean;
 
 import com.example.zxa01.iotclient.R;
 import com.example.zxa01.iotclient.common.pojo.Setting;
+import com.example.zxa01.iotclient.common.shared.Config;
+import com.example.zxa01.iotclient.component.login.LoginActivity;
 
 import java.util.List;
 
@@ -35,7 +38,6 @@ public class SettingViewModel extends ViewModel {
     }
 
 
-
     /**
      * child model
      */
@@ -53,7 +55,11 @@ public class SettingViewModel extends ViewModel {
         if (settingModel.getSettingMLD().getValue() != null &&
                 index != null &&
                 settingModel.getSettingMLD().getValue().size() > index) {
-            // TODO setting alert
+            if(settingModel.getSettingMLD().getValue().get(index).getKey().equals(Config.LOGOUT)){
+                Config.getConfig().reset();
+                context.startActivity(
+                        new Intent(context, LoginActivity.class));
+            }
         }
     }
 
@@ -66,8 +72,7 @@ public class SettingViewModel extends ViewModel {
     }
 
     public void setAdapter(List<Setting> settings) {
-        this.isLoading.set(false);
-        this.adapter.setSettings(settings);
-        this.adapter.notifyDataSetChanged();
+        isLoading.set(false);
+        adapter.setSettings(settings);
     }
 }

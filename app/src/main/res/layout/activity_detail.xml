@@ -128,7 +128,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/margin_lg"
                             android:padding="@dimen/padding_sm"
-                            android:text="@{viewModel.device.UDN}"
+                            android:text="@{viewModel.device.udn}"
                             android:textSize="@dimen/font" />
 
                     </LinearLayout>
@@ -335,7 +335,6 @@
                             android:text="@{viewModel.device.model.name}"
                             android:textSize="@dimen/font" />
 
-
                     </LinearLayout>
 
                 </TableRow>
@@ -478,6 +477,7 @@
             </TableLayout>
 
         </android.support.constraint.ConstraintLayout>
+
     </ScrollView>
 
 </layout>

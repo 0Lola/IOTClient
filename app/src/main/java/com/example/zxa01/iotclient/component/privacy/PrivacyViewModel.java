@@ -1,8 +1,10 @@
 package com.example.zxa01.iotclient.component.privacy;
 
 import com.example.zxa01.iotclient.R;
+import com.example.zxa01.iotclient.common.pojo.privacy.PrivacyContent;
 import com.example.zxa01.iotclient.common.pojo.privacy.PrivacyPolicy;
 import com.example.zxa01.iotclient.common.pojo.privacy.PrivacyPolicyReport;
+import com.example.zxa01.iotclient.common.shared.Config;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
@@ -12,13 +14,15 @@ import android.databinding.ObservableField;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Switch;
+
 import java.util.List;
 
 public class PrivacyViewModel extends ViewModel {
 
     public ObservableBoolean isLoading = new ObservableBoolean(true);
     public ObservableBoolean isUpload = new ObservableBoolean(true);
-    public ObservableField<PrivacyPolicyReport> privacyPolicyReport = new ObservableField<>(new PrivacyPolicyReport());
+    public ObservableField<PrivacyPolicyReport> privacyPolicyReport = new ObservableField<>();
+
     private PrivacyModel privacyModel = new PrivacyModel();
     private PrivacyAdapter adapter = new PrivacyAdapter(R.layout.recycler_view_privacy, this);
     private Context context;
@@ -26,15 +30,15 @@ public class PrivacyViewModel extends ViewModel {
 
     public PrivacyViewModel(Context context) {
         this.context = context;
-        this.drawDialog();
+        drawDialog();
     }
 
     /**
      * model
      */
 
-    public void fetchPrivacyPolicyReport() {
-        privacyModel.fetchPrivacyPolicyReport();
+    public void fetchPrivacyPolicyReportByDevice(String udn) {
+        privacyModel.readPrivacyPolicyReportByDevice(udn);
     }
 
     public MutableLiveData<PrivacyPolicyReport> observePrivacyPolicyReportMLD() {
@@ -42,15 +46,10 @@ public class PrivacyViewModel extends ViewModel {
     }
 
     public void setPrivacyPolicyReport(PrivacyPolicyReport privacyPolicyReport) {
-        if (privacyPolicyReport.getId() != null) {
-            this.isLoading.set(false);
+        if (privacyPolicyReport != null && privacyPolicyReport.getId() != null) {
             this.privacyPolicyReport.set(privacyPolicyReport);
-            this.setAdapter(privacyPolicyReport.getPolicies());
+            setAdapter(privacyPolicyReport.getPolicies());
         }
-    }
-
-    public void updateP3P() {
-        // TODO accpet privacy
     }
 
     /**
@@ -66,13 +65,15 @@ public class PrivacyViewModel extends ViewModel {
         return null;
     }
 
-    public void onChangeClick(Integer index, View view) {
+    public void onSetPrivacyChoice(Integer index, View view) {
         if (privacyModel.getPrivacyPolicyReportMLD().getValue() != null &&
                 index != null &&
                 privacyModel.getPrivacyPolicyReportMLD().getValue().getPolicies().size() > index) {
-            // TODO change pp
-            privacyModel.updatePrivacyPolicyChoice(
-                    privacyModel.getPrivacyPolicyReportMLD().getValue().getPolicies().get(index).getId(),
+            privacyModel.setPrivacyChoice(
+                    new PrivacyContent()
+                            .setUser(Config.getConfig().getUser())
+                            .setDevice(privacyModel.getPrivacyPolicyReportMLD().getValue().getDevice())
+                            .setPolicy(privacyModel.getPrivacyPolicyReportMLD().getValue().getPolicies().get(index)),
                     ((Switch) view).isChecked());
         }
     }
@@ -107,8 +108,8 @@ public class PrivacyViewModel extends ViewModel {
     }
 
     public void setAdapter(List<PrivacyPolicy> privacyPolicies) {
+        isLoading.set(false);
         adapter.setPrivacyPolicyList(privacyPolicies);
-        adapter.notifyDataSetChanged();
     }
 
 }

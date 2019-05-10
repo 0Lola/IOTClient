@@ -24,8 +24,8 @@ public class DetailViewModel extends ViewModel {
         this.context = context;
     }
 
-    public void fetchDevice() {
-        detailModel.fetchDevice();
+    public void fetchDevice(String udn) {
+        detailModel.readDevice(udn);
     }
 
     public MutableLiveData<Device> observeDeviceMLD() {
@@ -33,7 +33,7 @@ public class DetailViewModel extends ViewModel {
     }
 
     public void setDevice(Device device) {
-        if (device.getUDN() != null) {
+        if (device != null && device.getUdn() != null) {
             this.isLoading.set(false);
             this.device.set(device);
         }
@@ -42,7 +42,7 @@ public class DetailViewModel extends ViewModel {
     public void settingPrivacy() {
         context.startActivity(
                 new Intent(context, PrivacyActivity.class)
-                        .putExtra("udn", device.get().getUDN()));
+                        .putExtra("udn", device.get().getUdn()));
     }
 
     public void downloadPrivacyReport() {

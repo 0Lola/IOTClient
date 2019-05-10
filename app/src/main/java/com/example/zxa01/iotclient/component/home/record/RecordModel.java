@@ -33,7 +33,7 @@ public class RecordModel extends BaseObservable {
     private MutableLiveData<List<PrivacyPolicyReport>> privacyPolicyReportsMLD = new MutableLiveData<>();
 
     private Device oxygenDevice = new Device()
-            .setUDN("a1252c49-4188-4e6d-a32e-66604c664fb8")
+            .setUdn("a1252c49-4188-4e6d-a32e-66604c664fb8")
             .setName("指尖式血氧機")
             .setType(Device.Type.Sensor)
             .setManufacturer(new Manufacturer()

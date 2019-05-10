@@ -24,41 +24,33 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingBottom="@dimen/padding_sm"
             android:orientation="vertical">
 
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <TextView
-                android:id="@+id/textViewTitle"
-                android:layout_width="match_parent"
+                android:id="@+id/textViewPrivacy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{@string/privacy_title+" "+String.valueOf(position+1)}'
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/font" />
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/title_privacy"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/font_lg" />
+                android:onClick="@{(view)->viewModel.onSetPrivacyChoice(position,view)}"
+                android:text="@string/privacy_content"
+                android:textAlignment="textEnd"
+                android:thumbTextPadding="@dimen/padding_lg" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textViewPrivacy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text='@{@string/privacy_title+" "+String.valueOf(position+1)}'
-                    android:textColor="@color/colorGray"
-                    android:textSize="@dimen/font" />
-
-                <Switch
-                    android:id="@+id/switch1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="@{(view)->viewModel.onChangeClick(position,view)}"
-                    android:text="@string/privacy_content"
-                    android:textAlignment="textEnd"
-                    android:thumbTextPadding="@dimen/padding_lg" />
-
-            </LinearLayout>
+        </LinearLayout>
 
             <TextView
                 android:id="@+id/textView7"

@@ -21,37 +21,20 @@ public class RecordFragment extends Fragment {
     public RecordFragment() {
     }
 
-    public static RecordFragment newInstance(String param1, String param2) {
-        return new RecordFragment();
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_record, container, false);
-        viewModel = new RecordViewModel(binding.getRoot().getContext());
-        binding.setViewModel(viewModel);
-        binding.recordRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_record, container, false);
+        this.viewModel = new RecordViewModel(binding.getRoot().getContext());
+        this.binding.setViewModel(viewModel);
+        this.binding.recordRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         init();
         return binding.getRoot();
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-
     private void init() {
-        viewModel.refreshRecord();
-        viewModel.observePrivacyPolicyReportsMLD().observe(this, viewModel::setAdapter);
+        this.viewModel.refreshRecord();
+        this.viewModel.observePrivacyPolicyReportsMLD().observe(this, viewModel::setAdapter);
     }
 
-    public interface OnFragmentInteractionListener {
-        void onPrivacyFragment(Uri uri);
-    }
 }

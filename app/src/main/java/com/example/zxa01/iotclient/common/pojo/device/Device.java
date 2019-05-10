@@ -2,13 +2,14 @@ package com.example.zxa01.iotclient.common.pojo.device;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.RequiresApi;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class Device implements Parcelable {
 
-    private String UDN;
+    private String udn;
     private String name;
     private Type type;
     private Manufacturer manufacturer;
@@ -31,7 +32,7 @@ public class Device implements Parcelable {
                 icons.add(new Icon(icon));
             }
         }
-        this.setUDN(device.UDN)
+        this.setUdn(device.udn)
                 .setName(device.name)
                 .setType(device.type)
                 .setManufacturer(device.manufacturer != null ? new Manufacturer(device.manufacturer) : null)
@@ -42,7 +43,7 @@ public class Device implements Parcelable {
     }
 
     private Device(Parcel in) {
-        UDN = in.readString();
+        udn = in.readString();
         name = in.readString();
         type = Type.valueOf(in.readString());
         manufacturer = in.readParcelable(Manufacturer.class.getClassLoader());
@@ -55,7 +56,7 @@ public class Device implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(UDN);
+        dest.writeString(udn);
         dest.writeString(name);
         dest.writeString(type.name());
         dest.writeParcelable(manufacturer, flags);
@@ -83,12 +84,12 @@ public class Device implements Parcelable {
         }
     };
 
-    public String getUDN() {
-        return UDN;
+    public String getUdn() {
+        return udn;
     }
 
-    public Device setUDN(String UDN) {
-        this.UDN = UDN;
+    public Device setUdn(String udn) {
+        this.udn = udn;
         return this;
     }
 
@@ -176,12 +177,12 @@ public class Device implements Parcelable {
 
         Device device = (Device) o;
 
-        return UDN != null ? UDN.equals(device.UDN) : device.UDN == null;
+        return udn != null ? udn.equals(device.udn) : device.udn == null;
     }
 
     @Override
     public int hashCode() {
-        return UDN != null ? UDN.hashCode() : 0;
+        return udn != null ? udn.hashCode() : 0;
     }
 
     public enum Type {
@@ -191,7 +192,7 @@ public class Device implements Parcelable {
     @Override
     public String toString() {
         return "Device{" +
-                "UDN='" + UDN + '\'' +
+                "udn='" + udn + '\'' +
                 ", name='" + name + '\'' +
                 ", type=" + type +
                 ", manufacturer=" + manufacturer +

@@ -1,6 +1,8 @@
 package com.example.zxa01.iotclient.component.privacy;
 
 import android.databinding.DataBindingUtil;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.PictureDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -17,15 +19,19 @@ public class PrivacyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_privacy);
+        binding();
+        init();
+    }
+
+    private void binding() {
         viewModel = new PrivacyViewModel(binding.getRoot().getContext());
         binding.setViewModel(viewModel);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        init();
     }
 
     private void init() {
-        viewModel.fetchPrivacyPolicyReport();
+        viewModel.fetchPrivacyPolicyReportByDevice(getIntent().getStringExtra("udn"));
         viewModel.observePrivacyPolicyReportMLD().observe(this, viewModel::setPrivacyPolicyReport);
         viewModel.observeIsLoadingMLD().observe(this, viewModel::setIsUpload);
     }
@@ -37,6 +43,5 @@ public class PrivacyActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 }

@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/title_privacy"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/font_lg" />
 
                 <TextView
@@ -92,6 +92,8 @@
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
                 android:paddingTop="@dimen/padding"
+                android:layout_marginLeft="@dimen/margin_sm"
+                android:layout_marginRight="@dimen/margin_sm"
                 app:setAdapter="@{viewModel.getAdapter()}"
                 tools:listitem="@layout/recycler_view_privacy" />
 

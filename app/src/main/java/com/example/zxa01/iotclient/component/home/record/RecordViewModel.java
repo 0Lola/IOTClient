@@ -68,9 +68,8 @@ public class RecordViewModel extends ViewModel {
     }
 
     public void setAdapter(List<PrivacyPolicyReport> privacyPolicyReports) {
-        this.isLoading.set(false);
-        this.adapter.setPrivacyPolicyReports(privacyPolicyReports);
-        this.adapter.notifyDataSetChanged();
+        isLoading.set(false);
+        adapter.setPrivacyPolicyReports(privacyPolicyReports);
     }
 
 }

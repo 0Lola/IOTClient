@@ -1,32 +1,37 @@
 package com.example.zxa01.iotclient.common.http;
 
+import com.example.zxa01.iotclient.common.pojo.device.Device;
+import com.example.zxa01.iotclient.common.pojo.privacy.PrivacyChoice;
+import com.example.zxa01.iotclient.common.pojo.privacy.PrivacyPolicyReport;
+import com.example.zxa01.iotclient.common.shared.Config;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public class Api {
 
     private static ApiInterface api;
-    private static final String BASE_URL = "https://dog.ceo";
 
     public static ApiInterface getApi() {
         if (api == null) {
-            OkHttpClient client = new OkHttpClient.Builder()
-                    .build();
-            Gson gson = new GsonBuilder()
-                    .create();
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .client(client)
+                    .baseUrl("http://" + Config.getConfig().getGateway())
+                    .client(new OkHttpClient.Builder()
+                            .build())
                     .addConverterFactory(
-                            GsonConverterFactory.create(gson))
+                            GsonConverterFactory.create(new GsonBuilder()
+                                    .create()))
                     .build();
 
             api = retrofit.create(ApiInterface.class);
@@ -39,25 +44,22 @@ public class Api {
         @POST("/api/breeds/list/all")
         Call<Object> login();
 
-        @GET("/api/breeds/list/all")
-        Call<Object> getDevices();
+        @GET("/device")
+        Call<List<Device>> getDevices();
+
+        @GET("/device/{udn}")
+        Call<Device> readDevice(@Path("udn") String udn);
+
+        @GET("/device/privacy/{udn}")
+        Call<PrivacyPolicyReport> readPrivacyPolicyReportByDevice(@Path("udn") String udn);
 
 
-        @GET("/api/breeds/list/all")
-        Call<Object> getDevice();
+        @POST("/choice")
+        Call<PrivacyChoice> setPrivacyChoice(@Body PrivacyChoice privacyChoice);
 
-        @GET("/api/breeds/list/all")
-        Call<Object> getPrivacyPolicyReport();
-
-
-        @GET("/api/breeds/list/all")
-        Call<Object> updatePrivacyPolicyChoice();
-
+        // TODO
         @GET("/api/breeds/list/all")
         Call<Object> getRecord();
-
-//        @GET("/api/breed/{breed}/images")
-//        Call<DogBreedImages> getImagesByBreed(@Path("breed") String breed);
 
     }
 }

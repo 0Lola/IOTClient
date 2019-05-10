@@ -15,8 +15,8 @@ public class LoginViewModel extends ViewModel {
     private LoginModel loginModel = new LoginModel();
 
     public LoginViewModel(Context context) {
-        loginMessage.set(new LoginMessage());
         this.context = context;
+        loginMessage.set(new LoginMessage("192.168.2.69:8081","user","1234"));
     }
 
     public void login() {

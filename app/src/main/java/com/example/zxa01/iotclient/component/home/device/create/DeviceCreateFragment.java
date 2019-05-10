@@ -55,11 +55,15 @@ public class DeviceCreateFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_device_create, container, false);
-        viewModel = new DeviceViewModel(binding.getRoot().getContext());
-        binding.setViewModel(viewModel);
+        binding();
         return binding.getRoot();
     }
 
+
+    private void binding() {
+        viewModel = new DeviceViewModel(binding.getRoot().getContext());
+        binding.setViewModel(viewModel);
+    }
 
     private void qrcodeIntent() {
         try {

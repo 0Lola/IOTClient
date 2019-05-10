@@ -23,6 +23,8 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:paddingTop="@dimen/padding"
+            android:layout_marginRight="@dimen/margin_sm"
+            android:layout_marginLeft="@dimen/margin_sm"
             app:setAdapter="@{viewModel.getAdapter()}"
             tools:listitem="@layout/recycler_view_device" />
 
