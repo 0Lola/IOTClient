@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.ObservableBoolean;
+import android.support.annotation.NonNull;
 
 import com.example.zxa01.iotclient.R;
 import com.example.zxa01.iotclient.common.pojo.Setting;

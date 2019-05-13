@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/border_bottom"
-        android:onClick="@{()->viewModel.onPrivacyPolicyReportClick(position)}"
+        android:onClick="@{()->viewModel.onPrivacyChoiceClick(position)}"
         android:orientation="vertical"
         android:padding="@dimen/margin">
 
@@ -34,7 +34,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.getPrivacyPolicyReportAt(position).device.name}"
+                    android:text="@{viewModel.getPrivacyChoiceAt(position).privacyChoice.privacyContent.device.name}"
                     android:textColor="@color/colorLight"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -51,15 +51,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.getPrivacyPolicyReportAt(position).description}"
+                    android:text="@{viewModel.getPrivacyChoiceAt(position).privacyChoice.privacyContent.policy.description}"
                     tools:text="@tools:sample/lorem" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='2019.04.23'
+                    android:text="@{viewModel.getPrivacyChoiceAt(position).localDateTime.toString()}"
                     tools:text="@tools:sample/lorem" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="同意或拒絕"
+                    tools:text="@tools:sample/lorem" />
             </LinearLayout>
 
         </LinearLayout>

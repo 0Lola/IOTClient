@@ -1,14 +1,13 @@
 package com.example.zxa01.iotclient.component.home;
 
 import com.example.zxa01.iotclient.R;
-import com.example.zxa01.iotclient.component.home.device.DeviceViewModel;
+import com.example.zxa01.iotclient.component.home.device.bind.DeviceBindViewModel;
 import com.example.zxa01.iotclient.databinding.ActivityHomeBinding;
 import com.example.zxa01.iotclient.component.home.device.DeviceFragment;
 import com.example.zxa01.iotclient.component.home.record.RecordFragment;
 import com.example.zxa01.iotclient.component.home.setting.SettingFragment;
 
 import android.content.Intent;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -73,10 +72,10 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (resultCode == RESULT_OK) {
-            new DeviceViewModel().createDevice(intent.getStringExtra("SCAN_RESULT"));
+            new DeviceBindViewModel().bindDeviceAndGateway(intent.getStringExtra("SCAN_RESULT"));
         } else {
             new AlertDialog.Builder(this)
-                    .setMessage(R.string.create_qrcode_error)
+                    .setMessage(R.string.bind_qrcode_error)
                     .show();
         }
     }

@@ -1,8 +1,6 @@
 package com.example.zxa01.iotclient.component.home.record;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,17 +22,21 @@ public class RecordFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_record, container, false);
-        this.viewModel = new RecordViewModel(binding.getRoot().getContext());
-        this.binding.setViewModel(viewModel);
-        this.binding.recordRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_record, container, false);
+        binding();
         init();
         return binding.getRoot();
     }
 
+    private void binding() {
+        viewModel = new RecordViewModel(binding.getRoot().getContext());
+        binding.setViewModel(viewModel);
+        binding.recordRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+    }
+
     private void init() {
-        this.viewModel.refreshRecord();
-        this.viewModel.observePrivacyPolicyReportsMLD().observe(this, viewModel::setAdapter);
+        viewModel.refreshRecord();
+        viewModel.observePrivacyChoiceIndicesMLD().observe(this, viewModel::setAdapter);
     }
 
 }

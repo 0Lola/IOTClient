@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
+import android.support.annotation.NonNull;
 import android.view.Gravity;
 import android.widget.Toast;
 
@@ -20,11 +21,11 @@ public class DetailViewModel extends ViewModel {
     private Context context;
 
     public DetailViewModel(Context context) {
-        this.device.set(new Device());
         this.context = context;
+        device.set(new Device());
     }
 
-    public void fetchDevice(String udn) {
+    public void fetchDevice(@NonNull String udn) {
         detailModel.readDevice(udn);
     }
 
@@ -32,9 +33,9 @@ public class DetailViewModel extends ViewModel {
         return detailModel.getDeviceMLD();
     }
 
-    public void setDevice(Device device) {
-        if (device != null && device.getUdn() != null) {
-            this.isLoading.set(false);
+    public void setDevice(@NonNull Device device) {
+        if (device.getUdn() != null) {
+            isLoading.set(false);
             this.device.set(device);
         }
     }

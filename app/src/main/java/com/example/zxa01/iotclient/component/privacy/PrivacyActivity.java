@@ -1,8 +1,6 @@
 package com.example.zxa01.iotclient.component.privacy;
 
 import android.databinding.DataBindingUtil;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.PictureDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;

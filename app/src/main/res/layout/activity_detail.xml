@@ -467,7 +467,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/margin_lg"
                             android:padding="@dimen/padding_sm"
-                            android:text="@{viewModel.device.UPC}"
+                            android:text="@{viewModel.device.upc}"
                             android:textSize="@dimen/font" />
 
                     </LinearLayout>

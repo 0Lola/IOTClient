@@ -8,14 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.example.zxa01.iotclient.BR;
-import com.example.zxa01.iotclient.common.pojo.privacy.PrivacyPolicyReport;
+import com.example.zxa01.iotclient.common.pojo.index.PrivacyChoiceIndex;
 
 import java.util.List;
 
 public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.MyViewHolder> {
 
     private int layoutId;
-    private List<PrivacyPolicyReport> privacyPolicyReports;
+    private List<PrivacyChoiceIndex> privacyChoiceIndices;
     private RecordViewModel viewModel;
 
     public RecordAdapter(@LayoutRes int layoutId, RecordViewModel viewModel) {
@@ -40,7 +40,7 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.MyViewHold
 
     @Override
     public int getItemCount() {
-        return privacyPolicyReports == null ? 0 : privacyPolicyReports.size();
+        return privacyChoiceIndices == null ? 0 : privacyChoiceIndices.size();
     }
 
     @Override
@@ -48,8 +48,8 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.MyViewHold
         return getLayoutIdForPosition(position);
     }
 
-    public void setPrivacyPolicyReports(List<PrivacyPolicyReport> privacyPolicyReports) {
-        this.privacyPolicyReports = privacyPolicyReports;
+    public void setPrivacyChoiceIndices(List<PrivacyChoiceIndex> privacyChoiceIndices) {
+        this.privacyChoiceIndices = privacyChoiceIndices;
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -62,7 +62,7 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.MyViewHold
         }
 
         void bind(RecordViewModel viewModel, Integer position) {
-            viewModel.getPrivacyPolicyReportAt(position);
+            viewModel.getPrivacyChoiceAt(position);
             binding.setVariable(BR.viewModel, viewModel);
             binding.setVariable(BR.position, position);
             binding.executePendingBindings();

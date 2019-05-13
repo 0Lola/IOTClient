@@ -5,9 +5,10 @@ import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.ObservableBoolean;
+import android.support.annotation.NonNull;
 
 import com.example.zxa01.iotclient.R;
-import com.example.zxa01.iotclient.common.pojo.privacy.PrivacyPolicyReport;
+import com.example.zxa01.iotclient.common.pojo.index.PrivacyChoiceIndex;
 import com.example.zxa01.iotclient.component.privacy.PrivacyActivity;
 
 import java.util.List;
@@ -31,31 +32,30 @@ public class RecordViewModel extends ViewModel {
         recordModel.fetchRecord();
     }
 
-    public MutableLiveData<List<PrivacyPolicyReport>> observePrivacyPolicyReportsMLD() {
-        return recordModel.getPrivacyPolicyReportsMLD();
+    public MutableLiveData<List<PrivacyChoiceIndex>> observePrivacyChoiceIndicesMLD() {
+        return recordModel.getPrivacyChoiceIndicesMLD();
     }
 
     /**
      * child model
      */
 
-    public PrivacyPolicyReport getPrivacyPolicyReportAt(Integer index) {
-        if (recordModel.getPrivacyPolicyReportsMLD().getValue() != null &&
-                index != null &&
-                recordModel.getPrivacyPolicyReportsMLD().getValue().size() > index) {
-            return recordModel.getPrivacyPolicyReportsMLD().getValue().get(index);
+    public PrivacyChoiceIndex getPrivacyChoiceAt(@NonNull Integer index) {
+        if (recordModel.getPrivacyChoiceIndicesMLD().getValue() != null &&
+                recordModel.getPrivacyChoiceIndicesMLD().getValue().size() > index) {
+            return recordModel.getPrivacyChoiceIndicesMLD().getValue().get(index);
         }
         return null;
     }
 
-    public void onPrivacyPolicyReportClick(Integer index) {
-        if (recordModel.getPrivacyPolicyReportsMLD().getValue() != null &&
-                index != null &&
-                recordModel.getPrivacyPolicyReportsMLD().getValue().size() > index) {
-            // TODO detail of device
+    public void onPrivacyChoiceClick(@NonNull Integer index) {
+        if (recordModel.getPrivacyChoiceIndicesMLD().getValue() != null &&
+                recordModel.getPrivacyChoiceIndicesMLD().getValue().size() > index) {
             context.startActivity(
                     new Intent(context, PrivacyActivity.class)
-                            .putExtra("index", index));
+                            .putExtra("udn",
+                                    recordModel.getPrivacyChoiceIndicesMLD().getValue().get(index)
+                                            .getPrivacyChoice().getPrivacyContent().getDevice().getUdn()));
         }
     }
 
@@ -67,9 +67,9 @@ public class RecordViewModel extends ViewModel {
         return adapter;
     }
 
-    public void setAdapter(List<PrivacyPolicyReport> privacyPolicyReports) {
+    public void setAdapter(List<PrivacyChoiceIndex> privacyChoiceIndices) {
         isLoading.set(false);
-        adapter.setPrivacyPolicyReports(privacyPolicyReports);
+        adapter.setPrivacyChoiceIndices(privacyChoiceIndices);
     }
 
 }

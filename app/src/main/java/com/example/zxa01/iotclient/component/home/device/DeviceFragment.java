@@ -1,6 +1,5 @@
 package com.example.zxa01.iotclient.component.home.device;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.example.zxa01.iotclient.R;
 import com.example.zxa01.iotclient.databinding.FragmentDeviceBinding;
-import com.example.zxa01.iotclient.component.home.device.create.DeviceCreateFragment;
+import com.example.zxa01.iotclient.component.home.device.bind.DeviceBindFragment;
 
 
 public class DeviceFragment extends Fragment {
@@ -51,7 +50,7 @@ public class DeviceFragment extends Fragment {
             fragmentTransaction.remove(fragment);
         }
         fragmentTransaction.addToBackStack(null);
-        new DeviceCreateFragment().show(fragmentTransaction, String.valueOf(R.string.dialog));
+        new DeviceBindFragment().show(fragmentTransaction, String.valueOf(R.string.dialog));
     }
 
 

@@ -14,7 +14,7 @@ public class Device implements Parcelable {
     private Type type;
     private Manufacturer manufacturer;
     private Model model;
-    private String UPC;
+    private String upc;
     private String location;
     private List<Icon> icons = new LinkedList<>();
     private Status status;
@@ -37,7 +37,7 @@ public class Device implements Parcelable {
                 .setType(device.type)
                 .setManufacturer(device.manufacturer != null ? new Manufacturer(device.manufacturer) : null)
                 .setModel(device.model != null ? new Model(device.model) : null)
-                .setUPC(device.UPC)
+                .setUpc(device.upc)
                 .setLocation(device.location)
                 .setStatus(device.status);
     }
@@ -48,7 +48,7 @@ public class Device implements Parcelable {
         type = Type.valueOf(in.readString());
         manufacturer = in.readParcelable(Manufacturer.class.getClassLoader());
         model = in.readParcelable(Model.class.getClassLoader());
-        UPC = in.readString();
+        upc = in.readString();
         location = in.readString();
         icons = in.createTypedArrayList(Icon.CREATOR);
         status = Status.valueOf(in.readString());
@@ -61,7 +61,7 @@ public class Device implements Parcelable {
         dest.writeString(type.name());
         dest.writeParcelable(manufacturer, flags);
         dest.writeParcelable(model, flags);
-        dest.writeString(UPC);
+        dest.writeString(upc);
         dest.writeString(location);
         dest.writeTypedList(icons);
         dest.writeString(status.name());
@@ -129,12 +129,12 @@ public class Device implements Parcelable {
         return this;
     }
 
-    public String getUPC() {
-        return UPC;
+    public String getUpc() {
+        return upc;
     }
 
-    public Device setUPC(String UPC) {
-        this.UPC = UPC;
+    public Device setUpc(String upc) {
+        this.upc = upc;
         return this;
     }
 
@@ -197,7 +197,7 @@ public class Device implements Parcelable {
                 ", type=" + type +
                 ", manufacturer=" + manufacturer +
                 ", model=" + model +
-                ", UPC='" + UPC + '\'' +
+                ", UPC='" + upc + '\'' +
                 ", location='" + location + '\'' +
                 ", icons=" + icons +
                 ", status=" + status +

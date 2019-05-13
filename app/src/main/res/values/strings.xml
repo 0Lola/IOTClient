@@ -11,13 +11,13 @@
     <string name="nav_record">Record</string>
     <string name="nav_setting">Setting</string>
 
-    <!--Create-->
-    <string name="create_title">新增裝置</string>
-    <string name="create_input_placeholder">請輸入裝置的UDN</string>
-    <string name="create_button_qrcode">QRcode</string>
-    <string name="create_button_correct">新增</string>
-    <string name="create_button_cancel">返回</string>
-    <string name="create_qrcode_error">格式錯誤</string>
+    <!--Bind-->
+    <string name="bind_title">新增且綁定裝置</string>
+    <string name="bind_input_placeholder">請輸入裝置的UDN</string>
+    <string name="bind_button_qrcode">QRcode</string>
+    <string name="bind_button_correct">新增</string>
+    <string name="bind_button_cancel">返回</string>
+    <string name="bind_qrcode_error">格式錯誤</string>
 
 
     <!--Detail-->

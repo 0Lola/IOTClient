@@ -1,4 +1,4 @@
-package com.example.zxa01.iotclient.component.login.pojo;
+package com.example.zxa01.iotclient.common.pojo.auth;
 import android.support.annotation.NonNull;
 
 public class LoginMessage {
@@ -7,7 +7,7 @@ public class LoginMessage {
     private String account;
     private String password;
 
-    public LoginMessage() {
+    public LoginMessage(){
 
     }
 

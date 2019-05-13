@@ -11,6 +11,7 @@ import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Switch;
@@ -37,7 +38,7 @@ public class PrivacyViewModel extends ViewModel {
      * model
      */
 
-    public void fetchPrivacyPolicyReportByDevice(String udn) {
+    public void fetchPrivacyPolicyReportByDevice(@NonNull String udn) {
         privacyModel.readPrivacyPolicyReportByDevice(udn);
     }
 
@@ -56,7 +57,7 @@ public class PrivacyViewModel extends ViewModel {
      * child model
      */
 
-    public PrivacyPolicy getPrivacyAt(Integer index) {
+    public PrivacyPolicy getPrivacyAt(@NonNull Integer index) {
         if (privacyModel.getPrivacyPolicyReportMLD().getValue() != null &&
                 index != null &&
                 privacyModel.getPrivacyPolicyReportMLD().getValue().getPolicies().size() > index) {
@@ -65,9 +66,8 @@ public class PrivacyViewModel extends ViewModel {
         return null;
     }
 
-    public void onSetPrivacyChoice(Integer index, View view) {
+    public void onSetPrivacyChoice(@NonNull Integer index, View view) {
         if (privacyModel.getPrivacyPolicyReportMLD().getValue() != null &&
-                index != null &&
                 privacyModel.getPrivacyPolicyReportMLD().getValue().getPolicies().size() > index) {
             privacyModel.setPrivacyChoice(
                     new PrivacyContent()

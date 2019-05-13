@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.zxa01.iotclient.component.home.device.bind.DeviceBindViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".component.home.device.bind.DeviceBindFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/CreateAndBind"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorLightest"
+                android:fontFamily="monospace"
+                android:padding="@dimen/padding"
+                android:text="@string/bind_title"
+                android:textAlignment="center"
+                android:textSize="@dimen/font" />
+
+            <EditText
+                android:id="@+id/ubnInput"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
+                android:hint="@string/bind_input_placeholder"
+                android:paddingTop="@dimen/padding_lg"
+                android:paddingRight="@dimen/padding_xs"
+                android:paddingLeft="@dimen/padding_xs"
+                android:paddingBottom="@dimen/padding"
+                android:text="@={viewModel.udn}"
+                android:textColorHighlight="@color/colorPrimary"
+                android:textColorLink="@color/colorLight" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/qrcode"
+                    style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{()->viewModel.qrcode()}"
+                    android:text="@string/bind_button_qrcode" />
+
+                <Button
+                    android:id="@+id/cancel"
+                    style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{()->viewModel.cancel()}"
+                    android:text="@string/bind_button_cancel" />
+
+                <Button
+                    android:id="@+id/correct"
+                    style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{()->viewModel.bindDeviceAndGateway()}"
+                    android:text="@string/bind_button_correct" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </FrameLayout>
+
+</layout>

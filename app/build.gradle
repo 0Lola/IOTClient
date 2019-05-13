@@ -37,7 +37,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     // modelmapper
-    compile 'net.eunjae.android.modelmapper:ModelMapper:1.0.6'
+    implementation 'net.eunjae.android.modelmapper:ModelMapper:1.0.6'
 
     // rxjava
     implementation "io.reactivex:rxjava:1.1.8"

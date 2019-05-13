@@ -1,10 +1,8 @@
 package com.example.zxa01.iotclient.component.login;
-
-import com.example.zxa01.iotclient.common.http.Api;
 import com.example.zxa01.iotclient.common.pojo.Setting;
 import com.example.zxa01.iotclient.common.pojo.auth.User;
 import com.example.zxa01.iotclient.common.shared.Config;
-import com.example.zxa01.iotclient.component.login.pojo.LoginMessage;
+import com.example.zxa01.iotclient.common.pojo.auth.LoginMessage;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.databinding.BaseObservable;
@@ -17,7 +15,6 @@ public class LoginModel extends BaseObservable {
     public LoginModel() {
         isAuthorized = new MutableLiveData<>();
         isAuthorized.setValue(false);
-
     }
 
     public MutableLiveData<Boolean> isAuthorized() {

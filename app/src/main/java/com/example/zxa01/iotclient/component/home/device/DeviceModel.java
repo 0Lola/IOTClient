@@ -26,7 +26,7 @@ public class DeviceModel extends BaseObservable {
     }
 
     public void readDevices() {
-        Api.getApi().getDevices().enqueue(
+        Api.getApi().readDevices().enqueue(
                 new Callback<List<Device>>() {
                     @Override
                     public void onResponse(Call<List<Device>> call, Response<List<Device>> response) {
@@ -42,22 +42,5 @@ public class DeviceModel extends BaseObservable {
         );
     }
 
-    public void createDevice(String udn) {
-        // TODO api post-createDevice & update
-//        Api.getApi().getDevices().enqueue(
-////                new Callback<List<Device>>() {
-////                    @Override
-////                    public void onResponse(Call<List<Device>> call, Response<List<Device>> response) {
-////                        devicesMLD.setValue(response == null || response.body() == null ?
-////                                null : response.body().stream().collect(Collectors.toList()));
-////                    }
-////
-////                    @Override
-////                    public void onFailure(Call<List<Device>> call, Throwable t) {
-////                        Log.e("readDevices - onFailure()", t.getMessage(), t);
-////                    }
-////                }
-////        );
-    }
 
 }

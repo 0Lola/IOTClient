@@ -9,22 +9,19 @@ import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.ObservableBoolean;
+import android.support.annotation.NonNull;
 
 import java.util.List;
 
 public class DeviceViewModel extends ViewModel {
 
     public ObservableBoolean isLoading = new ObservableBoolean(true);
-
     private DeviceModel deviceModel = new DeviceModel();
     private DeviceAdapter adapter = new DeviceAdapter(R.layout.recycler_view_device, this);
     private Context context;
 
     public DeviceViewModel(Context context) {
         this.context = context;
-    }
-
-    public DeviceViewModel() {
     }
 
     /**
@@ -40,30 +37,19 @@ public class DeviceViewModel extends ViewModel {
     }
 
     /**
-     * create
-     */
-
-    public void createDevice(String udn) {
-        deviceModel.createDevice(udn);
-        readDevices();
-    }
-
-    /**
      * child model
      */
 
-    public Device getDeviceAt(Integer index) {
+    public Device getDeviceAt(@NonNull Integer index) {
         if (deviceModel.getDevicesMLD().getValue() != null &&
-                index != null &&
                 deviceModel.getDevicesMLD().getValue().size() > index) {
             return deviceModel.getDevicesMLD().getValue().get(index);
         }
         return null;
     }
 
-    public void onDevicesClick(Integer index) {
+    public void onDevicesClick(@NonNull Integer index) {
         if (deviceModel.getDevicesMLD().getValue() != null &&
-                index != null &&
                 deviceModel.getDevicesMLD().getValue().size() > index) {
             context.startActivity(
                     new Intent(context, DetailActivity.class)

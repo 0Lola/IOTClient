@@ -3,6 +3,7 @@ package com.example.zxa01.iotclient.component.privacy;
 import android.arch.lifecycle.MutableLiveData;
 import android.databinding.BaseObservable;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.example.zxa01.iotclient.common.http.Api;
@@ -32,7 +33,7 @@ public class PrivacyModel extends BaseObservable {
         return isUploadMLD;
     }
 
-    public void readPrivacyPolicyReportByDevice(String udn) {
+    public void readPrivacyPolicyReportByDevice(@NonNull String udn) {
         Api.getApi().readPrivacyPolicyReportByDevice(udn).enqueue(new Callback<PrivacyPolicyReport>() {
             @Override
             public void onResponse(Call<PrivacyPolicyReport> call, Response<PrivacyPolicyReport> response) {
@@ -47,7 +48,7 @@ public class PrivacyModel extends BaseObservable {
     }
 
 
-    public void setPrivacyChoice(PrivacyContent privacyContent, boolean isAccepted) {
+    public void setPrivacyChoice(@NonNull PrivacyContent privacyContent, @NonNull boolean isAccepted) {
         isUploadMLD.setValue(true);
         Api.getApi().setPrivacyChoice(
                 new PrivacyChoice().setPrivacyContent(privacyContent).setAccepted(isAccepted)).enqueue(
