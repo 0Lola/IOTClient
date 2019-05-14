@@ -7,9 +7,12 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.example.zxa01.iotclient.common.http.Api;
+import com.example.zxa01.iotclient.common.pojo.index.PrivacyChoiceResponse;
 import com.example.zxa01.iotclient.common.pojo.privacy.PrivacyChoice;
 import com.example.zxa01.iotclient.common.pojo.privacy.PrivacyContent;
 import com.example.zxa01.iotclient.common.pojo.privacy.PrivacyPolicyReport;
+import com.example.zxa01.iotclient.common.shared.Config;
+import com.google.gson.Gson;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,6 +21,7 @@ import retrofit2.Response;
 public class PrivacyModel extends BaseObservable {
 
     private MutableLiveData<Boolean> isUploadMLD = new MutableLiveData<>();
+
     private MutableLiveData<PrivacyPolicyReport> privacyPolicyReportMLD = new MutableLiveData<>();
 
     public PrivacyModel() {
@@ -50,19 +54,30 @@ public class PrivacyModel extends BaseObservable {
 
     public void setPrivacyChoice(@NonNull PrivacyContent privacyContent, @NonNull boolean isAccepted) {
         isUploadMLD.setValue(true);
-        Api.getApi().setPrivacyChoice(
-                new PrivacyChoice().setPrivacyContent(privacyContent).setAccepted(isAccepted)).enqueue(
-                new Callback<PrivacyChoice>() {
+        Api.getApi().setPrivacyChoice(transferPrivacyContent(privacyContent, isAccepted))
+                .enqueue(new Callback<PrivacyChoiceResponse>() {
                     @Override
-                    public void onResponse(Call<PrivacyChoice> call, Response<PrivacyChoice> response) {
-                        new Handler().postDelayed(() -> isUploadMLD.setValue(false), 500);
+                    public void onResponse(Call<PrivacyChoiceResponse> call, Response<PrivacyChoiceResponse> response) {
+                        dialogDelay();
                     }
 
                     @Override
-                    public void onFailure(Call<PrivacyChoice> call, Throwable t) {
+                    public void onFailure(Call<PrivacyChoiceResponse> call, Throwable t) {
+                        dialogDelay();
                         Log.e("setPrivacyChoice - onFailure()", t.getMessage(), t);
                     }
                 });
+    }
+
+    private void dialogDelay() {
+        new Handler().postDelayed(() -> isUploadMLD.setValue(false), 500);
+    }
+
+    private String transferPrivacyContent(@NonNull PrivacyContent privacyContent, @NonNull boolean isAccepted) {
+        return new Gson().toJson(
+                new PrivacyChoice().setPrivacyContent(
+                        privacyContent.setUser(Config.getConfig().getUser()))
+                        .setAccepted(isAccepted));
     }
 
 }

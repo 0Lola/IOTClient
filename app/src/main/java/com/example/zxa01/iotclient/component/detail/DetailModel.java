@@ -29,15 +29,15 @@ public class DetailModel extends BaseObservable {
     }
 
     public void readDevice(@NonNull String udn) {
-        Api.getApi().readDevice(udn).enqueue(new Callback<Device>() {
+        Api.getApi().readPrivacyPolicyReportByDevice(udn).enqueue(new Callback<PrivacyPolicyReport>() {
             @Override
-            public void onResponse(Call<Device> call, Response<Device> response) {
+            public void onResponse(Call<PrivacyPolicyReport> call, Response<PrivacyPolicyReport> response) {
                 setDeviceMLD(response == null || response.body() == null ?
-                        null : response.body());
+                        null : response.body().getDevice());
             }
 
             @Override
-            public void onFailure(Call<Device> call, Throwable t) {
+            public void onFailure(Call<PrivacyPolicyReport> call, Throwable t) {
                 Log.e("readDevice - onFailure()", t.getMessage(), t);
             }
         });

@@ -8,7 +8,7 @@ public class DefaultData {
     private LoginMessage loginMessage;
 
     private DefaultData() {
-        loginMessage = new LoginMessage("192.168.2.69:8080", "user", "1234");
+        loginMessage = new LoginMessage("192.168.2.90:8080", "user", "1234");
     }
 
     public static DefaultData getDefaultData() {

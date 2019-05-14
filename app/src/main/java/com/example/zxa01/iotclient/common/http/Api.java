@@ -1,11 +1,9 @@
 package com.example.zxa01.iotclient.common.http;
 
 import com.example.zxa01.iotclient.common.pojo.device.Device;
-import com.example.zxa01.iotclient.common.pojo.index.PrivacyChoiceIndex;
-import com.example.zxa01.iotclient.common.pojo.privacy.PrivacyChoice;
+import com.example.zxa01.iotclient.common.pojo.index.PrivacyChoiceResponse;
 import com.example.zxa01.iotclient.common.pojo.privacy.PrivacyPolicyReport;
 import com.example.zxa01.iotclient.common.shared.Config;
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.List;
@@ -54,21 +52,17 @@ public class Api {
         @POST("/device/{udn}")
         Call<Device> bindDeviceAndGateway(@Path("udn") String udn);
 
-        // 取得該裝置相關資料
-        @GET("/device/{udn}")
-        Call<Device> readDevice(@Path("udn") String udn);
-
         // 取得該裝置的隱私政策與相關資料
         @GET("/privacy/{udn}")
         Call<PrivacyPolicyReport> readPrivacyPolicyReportByDevice(@Path("udn") String udn);
 
         // 表達隱私偏好
         @POST("/choice")
-        Call<PrivacyChoice> setPrivacyChoice(@Body PrivacyChoice privacyChoice);
+        Call<PrivacyChoiceResponse> setPrivacyChoice(@Body String privacyChoice);
 
         // 取得隱私偏好記錄
         @GET("/choice")
-        Call<List<PrivacyChoiceIndex>> readPrivacyChoiceRecordsByUser();
+        Call<List<PrivacyChoiceResponse>> readPrivacyChoiceRecordsByUser();
 
     }
 }

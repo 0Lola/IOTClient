@@ -40,14 +40,12 @@
                 android:id="@+id/textViewTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/padding"
-                android:paddingTop="@dimen/padding_lg"
-                android:paddingRight="@dimen/padding"
-                android:paddingBottom="@dimen/padding"
-                android:background="@drawable/border_bottom_xl"
+                android:background="@color/colorLightest"
+                android:elevation="2dp"
+                android:padding="@dimen/padding"
                 android:text="@string/record_title"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/font_lg"
+                android:textColor="@color/colorLight"
+                android:textSize="@dimen/font"
                 android:textStyle="bold" />
 
             <android.support.v7.widget.RecyclerView
@@ -55,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
-                android:layout_marginTop="@dimen/margin"
+                android:paddingTop="@dimen/padding_sm"
                 app:setAdapter="@{viewModel.getAdapter()}"
                 tools:listitem="@layout/recycler_view_record" />
 

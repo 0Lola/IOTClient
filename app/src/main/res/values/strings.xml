@@ -33,6 +33,7 @@
     <string name="privacy_content">拒絕/同意</string>
     <string name="privacy_loading_title">隱私選擇儲存中</string>
     <string name="privacy_loading_message">請稍後...</string>
+    <string name="privacy_loading_error">儲存失敗，請重新嘗試</string>
 
     <!--Record-->
     <string name="record_title">隱私選擇記錄</string>

@@ -34,37 +34,63 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.getPrivacyChoiceAt(position).privacyChoice.privacyContent.device.name}"
-                    android:textColor="@color/colorLight"
+                    android:text="@{viewModel.getPrivacyChoiceAt(position).privacyContent.device.name}"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    tools:text="@tools:sample/lorem" />
+                    tools:text="溫度感測器" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/padding_sm"
+                    android:paddingTop="@dimen/padding_xs"
+                    android:paddingBottom="@dimen/padding_xs"
                     android:text='@{@string/privacy_version+" "+String.valueOf(position+1)}'
                     android:textSize="@dimen/font_sm"
-                    tools:text="@tools:sample/lorem" />
+                    tools:text="版本1" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.getPrivacyChoiceAt(position).privacyChoice.privacyContent.policy.description}"
-                    tools:text="@tools:sample/lorem" />
+                    android:text="@{viewModel.getPrivacyChoiceAt(position).privacyContent.policy.description}"
+                    tools:text="本APP會蒐集使用者周遭溫度作為第三方資料之地區環境分析資料。" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewModel.getPrivacyChoiceAt(position).localDateTime.toString()}"
-                    tools:text="@tools:sample/lorem" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="同意或拒絕"
-                    tools:text="@tools:sample/lorem" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_sm"
+                        android:layout_marginBottom="@dimen/margin_sm"
+                        android:textColor="@color/colorWhite"
+                        android:background="@drawable/green_radius_background"
+                        android:paddingLeft="@dimen/padding_sm"
+                        android:paddingTop="@dimen/padding_xs"
+                        android:paddingRight="@dimen/padding_sm"
+                        android:paddingBottom="@dimen/padding_xs"
+                        android:text="同意"
+                        android:textSize="@dimen/font_sm"
+                        tools:text="同意" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_sm"
+                        android:layout_marginBottom="@dimen/margin_sm"
+                        android:layout_marginLeft="@dimen/margin_sm"
+                        android:background="@drawable/light_radius_background"
+                        android:paddingLeft="@dimen/padding_sm"
+                        android:paddingTop="@dimen/padding_xs"
+                        android:paddingRight="@dimen/padding_sm"
+                        android:paddingBottom="@dimen/padding_xs"
+                        android:text="@{viewModel.getPrivacyChoiceAt(position).localDateTime}"
+                        android:textSize="@dimen/font_sm"
+                        tools:text="2019-01-12 13:52" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>

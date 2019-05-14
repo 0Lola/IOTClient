@@ -1,27 +1,28 @@
 package com.example.zxa01.iotclient.common.pojo;
 
+
 public class Setting {
     private String key;
     private String value;
 
-    public Setting(String key, String value) {
-        this.key = key;
-        this.value = value;
+    public Setting() {
     }
 
     public String getKey() {
         return key;
     }
 
-    public void setKey(String key) {
+    public Setting setKey(String key) {
         this.key = key;
+        return this;
     }
 
     public String getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public Setting setValue(String value) {
         this.value = value;
+        return this;
     }
 }

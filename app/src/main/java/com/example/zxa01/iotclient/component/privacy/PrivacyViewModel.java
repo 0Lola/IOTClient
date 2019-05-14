@@ -59,7 +59,6 @@ public class PrivacyViewModel extends ViewModel {
 
     public PrivacyPolicy getPrivacyAt(@NonNull Integer index) {
         if (privacyModel.getPrivacyPolicyReportMLD().getValue() != null &&
-                index != null &&
                 privacyModel.getPrivacyPolicyReportMLD().getValue().getPolicies().size() > index) {
             return privacyModel.getPrivacyPolicyReportMLD().getValue().getPolicies().get(index);
         }

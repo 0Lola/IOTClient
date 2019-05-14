@@ -6,7 +6,7 @@ import android.content.Context;
 public class HomeViewModel extends ViewModel {
 
     private Context context;
-    private HomeModel homeModel = new HomeModel();
+    private HomeModel homeModel;
 
     public HomeViewModel(Context context) {
         this.context = context;

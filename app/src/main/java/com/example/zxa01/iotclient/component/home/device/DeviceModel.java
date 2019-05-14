@@ -5,6 +5,7 @@ import com.example.zxa01.iotclient.common.pojo.device.Device;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.databinding.BaseObservable;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.util.List;
@@ -29,8 +30,8 @@ public class DeviceModel extends BaseObservable {
         Api.getApi().readDevices().enqueue(
                 new Callback<List<Device>>() {
                     @Override
-                    public void onResponse(Call<List<Device>> call, Response<List<Device>> response) {
-                        devicesMLD.setValue(response == null || response.body() == null ?
+                    public void onResponse(Call<List<Device>> call, @NonNull Response<List<Device>> response) {
+                        devicesMLD.setValue(response.body() == null ?
                                 null : response.body().stream().collect(Collectors.toList()));
                     }
 

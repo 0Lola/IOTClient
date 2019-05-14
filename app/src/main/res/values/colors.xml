@@ -10,5 +10,7 @@
     <color name="colorLightest">#F4F4F4</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorTransparent">#00000000</color>
+    <color name="colorGreen">#28A745</color>
+    <color name="colorRed">#DC3545</color>
 
 </resources>

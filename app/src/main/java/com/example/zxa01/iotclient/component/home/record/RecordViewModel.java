@@ -8,7 +8,7 @@ import android.databinding.ObservableBoolean;
 import android.support.annotation.NonNull;
 
 import com.example.zxa01.iotclient.R;
-import com.example.zxa01.iotclient.common.pojo.index.PrivacyChoiceIndex;
+import com.example.zxa01.iotclient.common.pojo.index.PrivacyChoiceResponse;
 import com.example.zxa01.iotclient.component.privacy.PrivacyActivity;
 
 import java.util.List;
@@ -32,30 +32,30 @@ public class RecordViewModel extends ViewModel {
         recordModel.fetchRecord();
     }
 
-    public MutableLiveData<List<PrivacyChoiceIndex>> observePrivacyChoiceIndicesMLD() {
-        return recordModel.getPrivacyChoiceIndicesMLD();
+    public MutableLiveData<List<PrivacyChoiceResponse>> observePrivacyChoiceIndicesMLD() {
+        return recordModel.getPrivacyChoiceResponsesMLD();
     }
 
     /**
      * child model
      */
 
-    public PrivacyChoiceIndex getPrivacyChoiceAt(@NonNull Integer index) {
-        if (recordModel.getPrivacyChoiceIndicesMLD().getValue() != null &&
-                recordModel.getPrivacyChoiceIndicesMLD().getValue().size() > index) {
-            return recordModel.getPrivacyChoiceIndicesMLD().getValue().get(index);
+    public PrivacyChoiceResponse getPrivacyChoiceAt(@NonNull Integer index) {
+        if (recordModel.getPrivacyChoiceResponsesMLD().getValue() != null &&
+                recordModel.getPrivacyChoiceResponsesMLD().getValue().size() > index) {
+            return recordModel.getPrivacyChoiceResponsesMLD().getValue().get(index);
         }
         return null;
     }
 
     public void onPrivacyChoiceClick(@NonNull Integer index) {
-        if (recordModel.getPrivacyChoiceIndicesMLD().getValue() != null &&
-                recordModel.getPrivacyChoiceIndicesMLD().getValue().size() > index) {
+        if (recordModel.getPrivacyChoiceResponsesMLD().getValue() != null &&
+                recordModel.getPrivacyChoiceResponsesMLD().getValue().size() > index) {
             context.startActivity(
                     new Intent(context, PrivacyActivity.class)
                             .putExtra("udn",
-                                    recordModel.getPrivacyChoiceIndicesMLD().getValue().get(index)
-                                            .getPrivacyChoice().getPrivacyContent().getDevice().getUdn()));
+                                    recordModel.getPrivacyChoiceResponsesMLD().getValue().get(index)
+                                            .getPrivacyContent().getDevice().getUdn()));
         }
     }
 
@@ -67,9 +67,9 @@ public class RecordViewModel extends ViewModel {
         return adapter;
     }
 
-    public void setAdapter(List<PrivacyChoiceIndex> privacyChoiceIndices) {
+    public void setAdapter(List<PrivacyChoiceResponse> privacyChoiceResponses) {
         isLoading.set(false);
-        adapter.setPrivacyChoiceIndices(privacyChoiceIndices);
+        adapter.setPrivacyChoiceResponses(privacyChoiceResponses);
     }
 
 }
