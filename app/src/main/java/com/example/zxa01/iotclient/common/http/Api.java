@@ -23,18 +23,16 @@ public class Api {
     private static ApiInterface api;
 
     public static ApiInterface getApi() {
-        if (api == null) {
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://" + Config.getConfig().getGateway())
-                    .client(new OkHttpClient.Builder()
-                            .build())
-                    .addConverterFactory(
-                            GsonConverterFactory.create(new GsonBuilder()
-                                    .create()))
-                    .build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://" + Config.getConfig().getGateway())
+                .client(new OkHttpClient.Builder()
+                        .build())
+                .addConverterFactory(
+                        GsonConverterFactory.create(new GsonBuilder()
+                                .create()))
+                .build();
 
-            api = retrofit.create(ApiInterface.class);
-        }
+        api = retrofit.create(ApiInterface.class);
         return api;
     }
 

@@ -16,6 +16,7 @@ import java.util.List;
 public class DeviceViewModel extends ViewModel {
 
     public ObservableBoolean isLoading = new ObservableBoolean(true);
+    public ObservableBoolean isNoContent = new ObservableBoolean(true);
     private DeviceModel deviceModel = new DeviceModel();
     private DeviceAdapter adapter = new DeviceAdapter(R.layout.recycler_view_device, this);
     private Context context;
@@ -67,6 +68,7 @@ public class DeviceViewModel extends ViewModel {
 
     public void setAdapter(List<Device> devices) {
         isLoading.set(false);
+        isNoContent.set(devices == null);
         adapter.setDevices(devices);
     }
 

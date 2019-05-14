@@ -59,6 +59,16 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textSize="@dimen/font"
+            android:text="@string/no_content"
+            android:visibility="@{viewModel.isLoading &amp;&amp; viewModel.isNoContent ? View.GONE : View.VISIBLE}" />
+
 
     </FrameLayout>
 </layout>

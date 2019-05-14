@@ -19,7 +19,6 @@
     <string name="bind_button_cancel">返回</string>
     <string name="bind_qrcode_error">格式錯誤</string>
 
-
     <!--Detail-->
     <string name="detail_preference_setting">隱私選項設定</string>
     <string name="detail_detect_report">檢測報告下載</string>
@@ -38,6 +37,9 @@
     <!--Record-->
     <string name="record_title">隱私選擇記錄</string>
     <string name="record_view">檢視</string>
+    <string name="record_accept">同意</string>
+    <string name="record_reject">拒絕</string>
+
 
     <!--Login-->
     <string name="action_sign_in">登入</string>
@@ -51,10 +53,8 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <!--Common-->
     <string name="dialog">dialog</string>
+    <string name="no_content">查無資料</string>
 
 </resources>

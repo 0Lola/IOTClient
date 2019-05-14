@@ -66,12 +66,12 @@
                         android:layout_marginTop="@dimen/margin_sm"
                         android:layout_marginBottom="@dimen/margin_sm"
                         android:textColor="@color/colorWhite"
-                        android:background="@drawable/green_radius_background"
+                        android:background="@{true ? @drawable/green_radius_background : @drawable/red_radius_background }"
                         android:paddingLeft="@dimen/padding_sm"
                         android:paddingTop="@dimen/padding_xs"
                         android:paddingRight="@dimen/padding_sm"
                         android:paddingBottom="@dimen/padding_xs"
-                        android:text="同意"
+                        android:text="@{true ? @string/record_accept : @string/record_reject }"
                         android:textSize="@dimen/font_sm"
                         tools:text="同意" />
                     <TextView

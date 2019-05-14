@@ -47,6 +47,16 @@
             android:src="@drawable/ic_add_black_24dp"
             app:backgroundTint="@color/colorPrimary" />
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/no_content"
+            android:textAlignment="center"
+            android:textSize="@dimen/font"
+            android:visibility="@{viewModel.isLoading &amp;&amp; viewModel.isNoContent ? View.GONE : View.VISIBLE}" />
+
     </FrameLayout>
 
 </layout>

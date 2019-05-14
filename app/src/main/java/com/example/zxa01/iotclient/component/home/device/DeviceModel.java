@@ -37,6 +37,7 @@ public class DeviceModel extends BaseObservable {
 
                     @Override
                     public void onFailure(Call<List<Device>> call, Throwable t) {
+                        devicesMLD.setValue(null);
                         Log.e("readDevices - onFailure()", t.getMessage(), t);
                     }
                 }

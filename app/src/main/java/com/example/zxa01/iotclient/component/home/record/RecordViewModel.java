@@ -16,6 +16,7 @@ import java.util.List;
 public class RecordViewModel extends ViewModel {
 
     public ObservableBoolean isLoading = new ObservableBoolean(true);
+    public ObservableBoolean isNoContent = new ObservableBoolean(true);
     private RecordModel recordModel = new RecordModel();
     private RecordAdapter adapter = new RecordAdapter(R.layout.recycler_view_record, this);
     private Context context;
@@ -69,6 +70,7 @@ public class RecordViewModel extends ViewModel {
 
     public void setAdapter(List<PrivacyChoiceResponse> privacyChoiceResponses) {
         isLoading.set(false);
+        isNoContent.set(privacyChoiceResponses == null);
         adapter.setPrivacyChoiceResponses(privacyChoiceResponses);
     }
 

@@ -35,6 +35,7 @@ public class RecordModel extends BaseObservable {
 
             @Override
             public void onFailure(Call<List<PrivacyChoiceResponse>> call, Throwable t) {
+                privacyChoiceResponsesMLD.setValue(null);
                 Log.e("fetchRecord - onFailure()", t.getMessage(), t);
             }
         });
